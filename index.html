@@ -3,95 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sito in Costruzione</title>
+    <title>BINARIO - Sito Ufficiale</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- PALETTE COLORI (Ispirata al Logo) ---
+           Sfondo Scuro: #12100e
+           Crema Logo:   #fdecc5
+           Testo Chiaro: #f5eedc
+        */
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            height: 100vh;
+            background-color: #12100e;
+            color: #f5eedc;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+            width: 450px; /* Dimensione ottimale logo orizzontale */
+            filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.7));
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* --- SOCIAL LINKS --- */
+        .social-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
-            align-items: center;
-            /* CAMBIA L'URL TRA LE VIRGOLETTE CON L'IMMAGINE CHE PREFERISCI */
-            background: url('https://unsplash.com/photos/nYIQYg8cQVc/download?force=true') no-repeat center center/cover;
-            color: #ffffff;
-            overflow: hidden;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
         }
-        /* Effetto scuro sullo sfondo per far risaltare il testo */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
+
+        .social-btn {
+            background-color: transparent;
+            color: #fdecc5;
+            border: 2px solid #fdecc5;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
-        .container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 3rem;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
+        .social-btn:hover {
+            background-color: #fdecc5;
+            color: #12100e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(253, 236, 197, 0.3);
         }
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-            background: linear-gradient(45deg, #ffffff, #a3a3a3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .logo {
-            max-width: 80%; /* Impedisce al logo di essere troppo grande */
-            max-height: 120px; /* Evita che il logo diventi gigantesco */
-            height: auto;
-            display: block;
-            margin: 0 auto 1.5rem auto; /* Lo centra e mette spazio sotto */
-        }
-        p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: #e5e5e5;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            font-size: 0.8rem;
+
+        /* --- SEZIONE EVENTI --- */
+        .section-title {
+            font-size: 1.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fdecc5;
+            border-bottom: 2px solid rgba(253, 236, 197, 0.2);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .events-list {
+            margin-bottom: 50px;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #fdecc5;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .event-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .event-details {
+            flex-grow: 1;
+            padding-right: 20px;
+        }
+
+        .event-date {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fdecc5;
+            font-weight: bold;
+        }
+
+        .event-title {
+            font-size: 1.25rem;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .event-location {
+            font-size: 0.9rem;
+            color: #bfae93;
+        }
+
+        .event-btn {
+            background-color: #fdecc5;
+            color: #12100e;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .event-btn:hover {
+            background-color: #fff8e7;
+            transform: scale(1.03);
+        }
+
+        /* Eventi passati con opacità ridotta */
+        .past-events .event-card {
+            border-left-color: #666;
+            opacity: 0.6;
+        }
+
+        .past-events .event-date {
+            color: #aaa;
+        }
+
+        .past-events .event-btn {
+            background-color: #555;
+            color: #eee;
+        }
+
+        .past-events .event-btn:hover {
+            background-color: #666;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: #777;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer a {
+            color: #fdecc5;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .event-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .event-btn {
+                width: 100%;
+                text-align: center;
+            }
+            .logo-container img {
+                width: 85%;
+            }
         }
     </style>
 </head>
 <body>
 
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="BINARIO Logo">
+        </div>
+    </header>
+
     <div class="container">
-        <div class="badge">Prossimamente</div>
-        <img src="logo.png" alt="Binario Band" class="logo">
-        <p>Il nostro nuovo spazio digitale è in preparazione. Torna a trovarci presto!</p>
+
+        <section class="social-section">
+            <div class="social-links">
+                <!--a href="https://open.spotify.com" target="_blank" class="social-btn">Spotify</a-->
+                <a href="https://instagram.com/binario_band" target="_blank" class="social-btn">Instagram</a>
+                <a href="https://www.youtube.com/@binario_band3762" target="_blank" class="social-btn">YouTube</a>
+                <a href="https://www.facebook.com/binaro.band" target="_blank" class="social-btn">Facebook</a>
+                <a href="mailto:info@binario.band" class="social-btn">Invia un'Email</a>
+            </div>
+        </section>
+
+        <section class="events-section">
+            <h2 class="section-title">Prossimi Eventi</h2>
+            <div class="events-list">
+                
+                <div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Sabato 25 Luglio 2026</div>
+                        <div class="event-title">Contest Mugello Sonoro</div>
+                        <div class="event-location">Borgo San Lorenzo</div>
+                    </div>
+                    <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid02766cVEAKPZwge2GFuxkkJEGng843E1zuYUQ18BXeu47QrBbYu2EywhUkjaW4rqRDl&id=61578601683224" target="_blank" class="event-btn">Dettagli Evento</a>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Domenica 26 Luglio 2026</div>
+                        <div class="event-title">Contest Fornace Sonora</div>
+                        <div class="event-location">Pistoia - Circolo ARCI Le Fornaci</div>
+                    </div>
+                    <a href="https://www.circololefornaci.it/contest-musicale/" target="_blank" class="event-btn">Dettagli Evento</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="events-section past-events">
+            <h2 class="section-title">Eventi Passati</h2>
+            <div class="events-list">
+                
+                <div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Venerdì 03 Luglio 2026</div>
+                        <div class="event-title">Pullulat - Dove viaggiano le Storie</div>
+                        <div class="event-location">Circolo SMS San Michele a Torri</div>
+                    </div>
+                    <a href="https://www.instagram.com/p/DZhTqy1DJFD/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" class="event-btn">Fai clic</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Sabato 18 Aprile 2026</div>
+                        <div class="event-title">Concerto per la Palestina</div>
+                        <div class="event-location">Centro Sociale "Il Pozzo"</div>
+                    </div>
+                    <a href="https://www.instagram.com/p/DZhTqy1DJFD/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" class="event-btn">Fai clic</a>
+                </div>
+            </div>
+        </section>
+
     </div>
+
+    <footer>
+        <p>&copy; 2026 BINARIO. Tutti i diritti riservati.</p>
+        <p>Contatti: <a href="mailto:info@binario.band">info@binario.band</a></p>
+    </footer>
 
 </body>
 </html>
