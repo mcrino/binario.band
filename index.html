@@ -56,6 +56,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .logo {
+            max-width: 80%; /* Impedisce al logo di essere troppo grande */
+            max-height: 120px; /* Evita che il logo diventi gigantesco */
+            height: auto;
+            display: block;
+            margin: 0 auto 1.5rem auto; /* Lo centra e mette spazio sotto */
+        }
         p {
             font-size: 1.1rem;
             font-weight: 300;
@@ -81,7 +88,7 @@
 
     <div class="container">
         <div class="badge">Prossimamente</div>
-        <h1>Binario Band</h1>
+        <img src="logo.png" alt="Binario Band" class="logo">
         <p>Il nostro nuovo spazio digitale è in preparazione. Torna a trovarci presto!</p>
     </div>
 
