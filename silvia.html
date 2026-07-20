@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrefour</title>
+    <title>Silvia</title>
     <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
@@ -133,13 +133,13 @@
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 20mm 15mm;
+                margin: 20mm 15mm; /* Margini standard A4 */
             }
 
             body {
                 background-color: #ffffff !important;
                 color: #000000 !important;
-                font-size: 11pt !important;
+                font-size: 12pt !important;
                 line-height: 1.5 !important;
             }
 
@@ -150,19 +150,21 @@
                 display: none !important;
             }
 
-            /* Layout testata */
+            /* Layout della testata in stampa */
             header {
                 padding: 0;
-                margin-bottom: 25px;
+                margin-bottom: 30px;
                 position: relative;
+                text-align: left;
             }
 
+            /* Logo Posizionato in alto a destra */
             .logo-container img {
                 position: absolute;
                 top: 0;
                 right: 0;
-                width: 130px;
-                filter: grayscale(100%);
+                width: 140px; /* Dimensione ottimale per A4 */
+                filter: grayscale(100%); /* Opzionale: evita spreco di inchiostro colore */
             }
 
             .container {
@@ -170,22 +172,21 @@
                 padding: 0;
             }
 
-            /* Titolo al centro */
+            /* Titolo al Centro */
             .song-header {
                 border-bottom: 2px solid #000000;
                 padding-bottom: 10px;
-                margin-top: 15px;
+                margin-top: 20px;
                 text-align: center;
             }
 
             .song-title {
                 color: #000000 !important;
-                font-size: 20pt;
+                font-size: 22pt;
                 font-weight: bold;
                 text-align: center;
             }
 
-            /* COLONNE DI STAMPA */
             .song-lyrics {
                 color: #000000 !important;
                 font-size: 11pt;
@@ -215,44 +216,60 @@
         </div>
 
         <div class="song-header">
-            <h1 class="song-title">Carrefour</h1>
+            <h1 class="song-title">Silvia</h1>
         </div>
 
         <!-- Testo Canzone -->
-        <div class="song-lyrics"> <p>Noi siamo soltanto percezione
-            C’è così tanto che non si può capire
-            come ad esempio i tuoi modi di fare
-            così bizzarri</p>
-            <p>Il mondo è solo immaginazione
-            ed è soltanto dentro la nostra testa
-            come la convinzione
-            che adesso basta, non ce la faccio più</p>
-            <p><b>Mi scoppia la testa 
-            c’è in corso una rissa 
-            dentro me
-            che ho in testa una bomba
-            un pensiero fisso
-            insomma te</b></p>
-            <p>La vita è un flusso di coscienza
-            somiglia troppo al mio punto di vista
-            distratto dai fatti contingenti
-            mi scordo sempre le cose più importanti</p>
-            <p>Come ad esempio che adesso qui sto bene
-            e non c’è niente che possa farmi male
-            nemmeno i tuoi vestiti corti
-            così succinti</p>
-            <p><b>Mi scoppia la testa 
-            c’è in corso una rissa 
-            dentro me
-            che ho in testa una bomba
-            un pensiero fisso
-            insomma te</b></p>
-            <p><b>Mi scoppia la testa 
-            c’è in corso una rissa 
-            dentro me
-            che ho in testa una bomba
-            un pensiero fisso
-            insomma te</b></p>
+        <div class="song-lyrics"> C’è un’altra persona che 
+            vive dentro di me, vive dentro di me
+            Mi proietta in scenari che
+            Non mi appartengono, non mi assomigliano
+            Io non voglio essere
+            quel tipo di persona che non c’è 
+            C’è un’altra persona che
+            Vive dentro di me, ma non sono io
+            Mi parla spesso di te
+            Dice cose inverosimili 
+            
+            <b>Silvia sei una stronza
+            Il mondo è un posto brutto
+            e tu non sei più qui 
+            a lenire i miei tormenti
+            a guarire i miei difetti 
+            Silvia non mi rompere i coglioni
+            il mondo è un posto bello ed io
+            non sono qui </b> 
+            
+            <i>C’è un’altra persona 
+            che vive al di fuori di me,
+            che mi proietta dentro un mondo
+            che ormai non mi appartiene. 
+            È del tutto identico a me,
+            ma non sono io.
+
+            Lo giuro.</i> 
+            
+            Non sono io.
+
+            Non sono io.
+
+            Non sono io.
+
+            Non sono io.
+
+            Non sono io!
+
+            Non sono 
+            io.
+            
+            <b>Silvia sei una stronza!
+            Il mondo è un posto brutto
+            e tu non sei più qui 
+            a lenire i miei tormenti
+            a guarire i miei difetti 
+            Silvia non mi rompere i coglioni
+            il mondo è un posto bello ed io
+            non sono qui </b> 
         </div>
 
     </div>
