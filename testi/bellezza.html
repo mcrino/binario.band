@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrefour</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Bellezza</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
     
     <style>
         /* =========================================================
@@ -133,13 +133,13 @@
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 20mm 15mm;
+                margin: 20mm 15mm; /* Margini standard A4 */
             }
 
             body {
                 background-color: #ffffff !important;
                 color: #000000 !important;
-                font-size: 11pt !important;
+                font-size: 12pt !important;
                 line-height: 1.5 !important;
             }
 
@@ -150,19 +150,21 @@
                 display: none !important;
             }
 
-            /* Layout testata */
+            /* Layout della testata in stampa */
             header {
                 padding: 0;
-                margin-bottom: 25px;
+                margin-bottom: 30px;
                 position: relative;
+                text-align: left;
             }
 
+            /* Logo Posizionato in alto a destra */
             .logo-container img {
                 position: absolute;
                 top: 0;
                 right: 0;
-                width: 130px;
-                filter: grayscale(100%);
+                width: 140px; /* Dimensione ottimale per A4 */
+                filter: grayscale(100%); /* Opzionale: evita spreco di inchiostro colore */
             }
 
             .container {
@@ -170,22 +172,21 @@
                 padding: 0;
             }
 
-            /* Titolo al centro */
+            /* Titolo al Centro */
             .song-header {
                 border-bottom: 2px solid #000000;
                 padding-bottom: 10px;
-                margin-top: 15px;
+                margin-top: 20px;
                 text-align: center;
             }
 
             .song-title {
                 color: #000000 !important;
-                font-size: 20pt;
+                font-size: 22pt;
                 font-weight: bold;
                 text-align: center;
             }
 
-            /* COLONNE DI STAMPA */
             .song-lyrics {
                 color: #000000 !important;
                 font-size: 11pt;
@@ -197,13 +198,13 @@
 
     <header>
         <div class="logo-container">
-            <a href="index.html"><img src="img/logo.png" alt="BINARIO Logo"></a>
+            <a href="../index.html"><img src="../img/logo.png" alt="BINARIO Logo"></a>
         </div>
     </header>
 
     <div class="container">
         
-        <a href="testi.html" class="nav-link">&larr; Torna all'indice dei testi</a>
+        <a href="../testi.html" class="nav-link">&larr; Torna all'indice dei testi</a>
 
         <!-- Controlli Accessibilità e Stampa -->
         <div class="accessibility-bar">
@@ -215,44 +216,58 @@
         </div>
 
         <div class="song-header">
-            <h1 class="song-title">Carrefour</h1>
+            <h1 class="song-title">Bellezza</h1>
         </div>
 
         <!-- Testo Canzone -->
-        <div class="song-lyrics"> <p>Noi siamo soltanto percezione
-            C’è così tanto che non si può capire
-            come ad esempio i tuoi modi di fare
-            così bizzarri</p>
-            <p>Il mondo è solo immaginazione
-            ed è soltanto dentro la nostra testa
-            come la convinzione
-            che adesso basta, non ce la faccio più</p>
-            <p><b>Mi scoppia la testa 
-            c’è in corso una rissa 
-            dentro me
-            che ho in testa una bomba
-            un pensiero fisso
-            insomma te</b></p>
-            <p>La vita è un flusso di coscienza
-            somiglia troppo al mio punto di vista
-            distratto dai fatti contingenti
-            mi scordo sempre le cose più importanti</p>
-            <p>Come ad esempio che adesso qui sto bene
-            e non c’è niente che possa farmi male
-            nemmeno i tuoi vestiti corti
-            così succinti</p>
-            <p><b>Mi scoppia la testa 
-            c’è in corso una rissa 
-            dentro me
-            che ho in testa una bomba
-            un pensiero fisso
-            insomma te</b></p>
-            <p><b>Mi scoppia la testa 
-            c’è in corso una rissa 
-            dentro me
-            che ho in testa una bomba
-            un pensiero fisso
-            insomma te</b></p>
+        <div class="song-lyrics"> Indifferente al fascino
+            di queste quattro mura
+            che mi hanno visto crescere
+            lenito la paura
+            che un giorno dovrò andarmene
+            e cercare gloria altrove
+            che un giorno dovrò crescere 
+            e cercare di capire
+
+            Perché le cose cambiano ma io resto lo stesso
+            ad aspettare invano che qualcosa cambi in meglio
+            ad aspettarti invano e  crescono le erbacce
+            su quel muretto in cui ci sentivamo grandi
+            
+            Una luce all'orizzonte non potrà piú spaventarci
+            e le macchine che passano hanno il senso dei tuoi sguardi
+            mi perdo in frasi fatte che denotano stanchezza
+            ma in questo tempo inutile c'è un'unica certezza
+
+            <b>Fumare non ha più
+            lo stesso sapore
+            e stringo tra le labbra
+            ancora il tuo nome
+            e cerco le parole
+            in fondo ad un bicchiere
+            lo bevo in fretta e furia
+            resta solo il dolore</b>
+
+            Seduto sui miei sbagli guardo cupo l'orizzonte
+            la linea che separa il mio passato dal presente
+            discrimine ipotetico e allegorico che scinde
+            la maschera che indosso dal bisogno d'esser triste
+            Perché le cose cambiano e lo fanno in modo assurdo
+            e quello che oggi è certo potrà poi cambiare a un tratto
+            e a un tratto mi ritrovo come sempre ad una scelta
+            e anche se non si vede il pianto mio s'è fatto pietra
+            
+            <i>Sconterò morendo la mia vita
+            Sconterò, sconterò</i>
+
+            <b>Fumare non ha più
+            lo stesso sapore
+            e stringo tra le labbra
+            ancora il tuo nome
+            e cerco le parole
+            in fondo ad un bicchiere
+            lo bevo in fretta e furia
+            resta solo il dolore</b>
         </div>
 
     </div>

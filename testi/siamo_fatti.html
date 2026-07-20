@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silvia</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    
+    <style>
+        /* =========================================================
+           1. STILI PER LA SCHERMATA (PC, Smartphone, Tablet)
+           ========================================================= */
+        :root {
+            --bg-color: #12100e;
+            --text-color: #f5eedc;
+            --accent-color: #fdecc5;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(253, 236, 197, 0.2);
+            --font-size-base: 18px;
+        }
+
+        body.high-contrast {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #ffff00;
+            --card-bg: #111111;
+            --border-color: #ffff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: var(--font-size-base);
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo-container img {
+            width: 200px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* BARRA CONTROLLI ACCESSIBILITÀ E STAMPA */
+        .accessibility-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .acc-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .acc-btn:hover {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        /* LAYOUT TESTO CANZONE */
+        .song-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .song-title {
+            font-size: 2.2em;
+            color: var(--accent-color);
+        }
+
+        .song-lyrics {
+            white-space: pre-line;
+            font-size: 1em;
+            margin-bottom: 40px;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+        /* =========================================================
+           2. REGOLE ESCLUSIVE PER LA STAMPA A4 (PDF o Carta)
+           ========================================================= */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 20mm 15mm; /* Margini standard A4 */
+            }
+
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                font-size: 12pt !important;
+                line-height: 1.5 !important;
+            }
+
+            /* Nascondiamo quello che non serve su carta */
+            .nav-link, 
+            .accessibility-bar, 
+            footer {
+                display: none !important;
+            }
+
+            /* Layout della testata in stampa */
+            header {
+                padding: 0;
+                margin-bottom: 30px;
+                position: relative;
+                text-align: left;
+            }
+
+            /* Logo Posizionato in alto a destra */
+            .logo-container img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 140px; /* Dimensione ottimale per A4 */
+                filter: grayscale(100%); /* Opzionale: evita spreco di inchiostro colore */
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            /* Titolo al Centro */
+            .song-header {
+                border-bottom: 2px solid #000000;
+                padding-bottom: 10px;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .song-title {
+                color: #000000 !important;
+                font-size: 22pt;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .song-lyrics {
+                color: #000000 !important;
+                font-size: 11pt;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="../index.html"><img src="../img/logo.png" alt="BINARIO Logo"></a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <a href="../testi.html" class="nav-link">&larr; Torna all'indice dei testi</a>
+
+        <!-- Controlli Accessibilità e Stampa -->
+        <div class="accessibility-bar">
+            <span>Accessibilità:</span>
+            <button class="acc-btn" onclick="changeFontSize(-2)">A-</button>
+            <button class="acc-btn" onclick="changeFontSize(2)">A+</button>
+            <button class="acc-btn" onclick="toggleContrast()">Alto Contrasto</button>
+            <button class="acc-btn" onclick="window.print()">🖨️ Stampa A4</button>
+        </div>
+
+        <div class="song-header">
+            <h1 class="song-title">(Siamo) fatti per star bene</h1>
+        </div>
+
+        <!-- Testo Canzone -->
+        <div class="song-lyrics">Siamo fatti per star bene
+        per passare le giornate
+        a guardarci dentro gli occhi 
+        per ore
+        
+        E incollati allo specchio
+        il riflesso rivela
+        dettagli che forse
+        era meglio tacere
+        
+        Ad esempio le rughe
+        ci costellano il volto,
+        condensano il tempo,
+        raccontano storie
+        
+        Ma non ti devi
+        lasciar sopraffare
+        ricorda piuttosto
+        che siam fatti per star bene
+
+        <b>Siamo fatti per star bene
+        siamo fatti per amare
+        per rincorrere un pretesto
+        facendoci del male
+        Siamo fatti per star bene
+        siamo fatti per scappare
+        da un futuro ancora incerto
+        e un passato che fa male</b>
+
+        <i>Siamo fatti per star bene 
+        per la zumba e per lo yoga
+        per cercare l'equilibrio
+        che sta dietro ad ogni cosa
+        siamo fatti per star bene
+        siamo fatti per osare
+        per rincorrere aquiloni
+        sterminare le zanzare
+        
+        Per restare notti intere
+        a leccarci le ferite
+        contemplare l’infinito
+        in ogni nostra cicatrice
+        
+        Siamo fatti per star bene 
+        per il vino e per la droga
+        per i sogni di conquista
+        ormai smarriti nella foga
+        
+        per le notti insonni e per le sbornie 
+        ancora da smaltire
+        Siamo delitti incompiuti e pene ancora da subire
+        Noi
+        
+        siamo fatti per star bene siamo fatti per amare, noi
+        siamo fatti per star bene siamo fatti per amare
+
+        <b>Siamo fatti per star bene
+        siamo fatti per amare
+        per rincorrere un pretesto
+        facendoci del male
+        Siamo fatti per star bene
+        siamo fatti per scappare
+        da un futuro ancora incerto
+        e un passato che fa male</b>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BINARIO</p>
+    </footer>
+
+    <script>
+        let currentFontSize = 18;
+
+        function changeFontSize(delta) {
+            currentFontSize += delta;
+            if(currentFontSize < 14) currentFontSize = 14;
+            if(currentFontSize > 32) currentFontSize = 32;
+            document.body.style.setProperty('--font-size-base', currentFontSize + 'px');
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+    </script>
+</body>
+</html>
