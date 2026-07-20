@@ -1,110 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-<title>404</title>
-<meta charset="utf-8">    
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-<meta name="description" content="Your description">
-<meta name="keywords" content="Your keywords">
-<meta name="author" content="Your name">
-<!--CSS-->
-<link rel="stylesheet" href="css/bootstrap.css" >
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/stuck.css">
-<link rel="stylesheet" href="fonts/font-awesome.css">
-<!--JS-->
-<script src="js/jquery.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/superfish.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.mobilemenu.js"></script>
-<script src="js/jquery.ui.totop.js"></script>
-<script src="js/tmstickup.js"></script>
-<!--[if lt IE 9]>
-    <div style='text-align:center' class="qwerty"><a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div>  
-  <![endif]-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BINARIO - Sito Ufficiale</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        /* --- PALETTE COLORI (Ispirata al Logo) ---
+           Sfondo Scuro: #12100e
+           Crema Logo:   #fdecc5
+           Testo Chiaro: #f5eedc
+        */
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <link rel="stylesheet" href="css/ie.css">
-  <![endif]-->
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #12100e;
+            color: #f5eedc;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+            width: 450px; /* Dimensione ottimale logo orizzontale */
+            filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.7));
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* --- SOCIAL LINKS --- */
+        .social-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-btn {
+            background-color: transparent;
+            color: #fdecc5;
+            border: 2px solid #fdecc5;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background-color: #fdecc5;
+            color: #12100e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(253, 236, 197, 0.3);
+        }
+
+        /* --- SEZIONE EVENTI --- */
+        .section-title {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fdecc5;
+            border-bottom: 2px solid rgba(253, 236, 197, 0.2);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .events-list {
+            margin-bottom: 50px;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #fdecc5;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .event-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .event-details {
+            flex-grow: 1;
+            padding-right: 20px;
+        }
+
+        .event-date {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fdecc5;
+            font-weight: bold;
+        }
+
+        .event-title {
+            font-size: 1.25rem;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .event-location {
+            font-size: 0.9rem;
+            color: #bfae93;
+        }
+
+        .event-btn {
+            background-color: #fdecc5;
+            color: #12100e;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .event-btn:hover {
+            background-color: #fff8e7;
+            transform: scale(1.03);
+        }
+
+        /* Eventi passati con opacità ridotta */
+        .past-events .event-card {
+            border-left-color: #666;
+            opacity: 0.6;
+        }
+
+        .past-events .event-date {
+            color: #aaa;
+        }
+
+        .past-events .event-btn {
+            background-color: #555;
+            color: #eee;
+        }
+
+        .past-events .event-btn:hover {
+            background-color: #666;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: #777;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer a {
+            color: #fdecc5;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .event-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .event-btn {
+                width: 100%;
+                text-align: center;
+            }
+            .logo-container img {
+                width: 85%;
+            }
+        }
+    </style>
 </head>
 <body>
-<!--header-->
-<header class="indent"> 
-    <div class="container"> 
-        <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img src="img/logo.png" alt="logo"></a></h1>
-        <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-            <ul class="nav sf-menu clearfix">
-                <li><a href="index.html">Home</a><em></em></li>
-                <li><a href="index-1.html">About</a><em></em></li>
-                <li class="sub-menu"><a href="index-2.html">Discography</a><em></em><span></span>
-                    <ul class="submenu">
-                        <li><a href="#">Dolore ipsu</a></li>
-                        <li><a href="#">Consecte</a><span></span>
-                            <ul class="submenu">
-                                <li><a href="#">Dolore ipsu</a></li>
-                                <li><a href="#">Consecte</a></li>
-                                <li><a href="#">Elit Conseq</a></li>
-                                <li class="tr"></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Elit Conseq</a></li>
-                        <li class="tr1"></li>
-                    </ul>
-                </li>
-                <li><a href="index-3.html">Blog</a><em></em></li>
-                <li><a href="index-4.html">Contacts</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<!--content-->
-<div class="global indent">
-    <div class="err-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 errorBox">
-                    <figure><img src="img/error.png" alt=""></figure>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 errorBox1">
-                    <p class="title">sorry!</p>
-                    <p class="description">page not found</p>
-                    <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-                    <p>Please try using our search box below to look for information on the website</p>
-                    <form id="search-404" class="search" action="search.php" method="GET" accept-charset="utf-8">
-                        <input type="text" name="s" value="" onfocus="if (this.value == '') {this.value=''}" onblur="if (this.value == '') {this.value=''}">
-                        <a href="#" onClick="document.getElementById('search-404').submit()"></a>
-                    </form>
-                </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="BINARIO Logo">
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section class="social-section">
+            <div class="social-links">
+                <!--a href="https://open.spotify.com" target="_blank" class="social-btn">Spotify</a-->
+                <a href="https://instagram.com/binario_band" target="_blank" class="social-btn">Instagram</a>
+                <a href="https://www.youtube.com/@binario_band3762" target="_blank" class="social-btn">YouTube</a>
+                <a href="https://www.facebook.com/binaro.band" target="_blank" class="social-btn">Facebook</a>
+                <a href="mailto:info@binario.band" class="social-btn">Invia un'Email</a>
             </div>
-        </div>
+        </section>
+
+        <section class="events-section">
+            <h2 class="section-title">Che ci fai qui?</h2>
+            <div>Questa pagina non esiste, non è mai esistita, forse non esisterà mai. Dai retta a noi:</div>
+            
+            <!-- Contenitore per staccare e centrare il pulsante -->
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="https://binario.band" class="event-btn" style="display: inline-block;">torna alla home!</a>
+            </div>
+        </section>
+
+        
+
     </div>
-</div>
-<!--footer-->
-<div class="container">
+
     <footer>
-        <div class="col-lg-5 col-md-5 col-sm-5">
-            <ul class="follow_icon">
-                <li><a href="#"><img src="img/follow_icon1.png" alt=""></a></li>
-                <li><a href="#"><img src="img/follow_icon2.png" alt=""></a></li>
-                <li><a href="#"><img src="img/follow_icon3.png" alt=""></a></li>
-                <li><a href="#"><img src="img/follow_icon4.png" alt=""></a></li>
-            </ul>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 center">
-            <figure><img src="img/foo_logo.png" alt=""></figure>
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-5">
-            <p><span>Mark & lime</span> &copy; <em id="copyright-year"></em> | <a href="index-5.html">Privacy policy</a></p>
-        </div>
+        <p>&copy; 2026 BINARIO. Tutti i diritti riservati.</p>
+        <p>Contatti: <a href="mailto:info@binario.band">info@binario.band</a></p>
     </footer>
-</div>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/tm-scripts.js"></script>
+
 </body>
 </html>
