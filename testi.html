@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testi - BINARIO</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        /* --- STILI BASE (Stessa Palette) --- */
+        :root {
+            --bg-color: #12100e;
+            --text-color: #f5eedc;
+            --accent-color: #fdecc5;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(253, 236, 197, 0.2);
+            --font-size-base: 16px;
+        }
+
+        /* METAL / HIGH CONTRAST MODE */
+        body.high-contrast {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #ffff00; /* Giallo puro ad altissimo contrasto */
+            --card-bg: #111111;
+            --border-color: #ffff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+
+        .logo-container img {
+            width: 300px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* --- BARRA CONTROLLI ACCESSIBILITÀ --- */
+        .accessibility-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .acc-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .acc-btn:hover {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        /* --- LISTA BRANI --- */
+        .song-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .song-item a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 18px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            border-radius: 0 8px 8px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .song-item a:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="img/logo.png" alt="BINARIO Logo"></a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <a href="index.html" class="nav-link">&larr; Torna alla Home</a>
+
+        <!-- Controlli Accessibilità -->
+        <div class="accessibility-bar">
+            <span>Accessibilità:</span>
+            <button class="acc-btn" onclick="changeFontSize(-2)">A-</button>
+            <button class="acc-btn" onclick="changeFontSize(2)">A+</button>
+            <button class="acc-btn" onclick="toggleContrast()">Alto Contrasto</button>
+        </div>
+
+        <h1 style="color: var(--accent-color); margin-bottom: 20px;">Indice dei Testi</h1>
+
+        <ul class="song-list">
+            <li class="song-item">
+                <a href="carrefour.html">
+                    <span>Carrefour</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+            <li class="song-item">
+                <a href="silvia.html">
+                    <span>Silvia</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+            <li class="song-item">
+                <a href="attico.html">
+                    <span>Attico</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BINARIO</p>
+    </footer>
+
+    <!-- JavaScript per Ridimensionare Font e Alternare Contrasto -->
+    <script>
+        let currentFontSize = 16;
+
+        function changeFontSize(delta) {
+            currentFontSize += delta;
+            if(currentFontSize < 12) currentFontSize = 12;
+            if(currentFontSize > 28) currentFontSize = 28;
+            document.body.style.setProperty('--font-size-base', currentFontSize + 'px');
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+    </script>
+</body>
+</html>
