@@ -91,6 +91,15 @@
             text-align: center;
         }
 
+        .member-card img {
+            width: 100%;
+            height: 220px; /* Altezza fissa uniforme per tutte le foto */
+            object-fit: cover; /* Taglia l'immagine senza deformarla per riempire il rettangolo */
+            object-position: center top; /* Inquadra focalizzandosi sul viso/testa */
+            border-radius: 8px; /* Angoli leggermente arrotondati */
+            margin-bottom: 15px;
+        }
+
         .member-role {
             color: var(--accent-color);
             font-size: 0.9rem;
@@ -121,8 +130,29 @@
 
         <a href="index.html" class="nav-link">&larr; Torna alla Home</a>
 
-        <h1 class="page-title">Chi Siamo</h1>
+        <div style="
+            margin: 35px 0; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        ">
+            <img src="img/band.png" alt="BINARIO Live" style="
+                width: 100%; 
+                height: auto; 
+                display: block;
+            ">
+        </div>
 
+        <p style="
+            font-size: 1.25rem; 
+            font-style: italic; 
+            color: var(--accent-color); 
+            margin-bottom: 40px; 
+            border-left: 3px solid var(--accent-color); 
+            padding-left: 15px;
+            line-height: 1.6;
+        ">
         <div class="about-text">
             <p>
                 I <strong>Binario</strong> sono una band fiorentina nata nel 2017, da qualche parte su un treno diretto a Praga. Partiti in due, con i soli Jacopo Daniello al basso e Andrea Bonacorsi alla chitarra, negli anni hanno rimescolato le carte diverse volte, cambiando pelle e suoni.
@@ -140,27 +170,32 @@
         
         <div class="members-grid">
             <div class="member-card">
-                <!-- Qui in futuro potrai aggiungere: <img src="matteo.jpg" style="width:100%; border-radius:5px;"> -->
+                <img src="img/matte.png" style="width:100%; border-radius:5px;">
                 <h4>Matteo Crinò</h4>
                 <div class="member-role">Voce</div>
             </div>
             <div class="member-card">
+                <img src="img/lapo.png" style="width:100%; border-radius:5px;">
                 <h4>Lapo Querci</h4>
                 <div class="member-role">Tastiere</div>
             </div>
             <div class="member-card">
+                <img src="img/gazza.png" style="width:100%; border-radius:5px;">
                 <h4>Francesco Gazzaniga</h4>
                 <div class="member-role">Batteria</div>
             </div>
             <div class="member-card">
+                <img src="img/jack.png" style="width:100%; border-radius:5px;">
                 <h4>Jacopo Daniello</h4>
                 <div class="member-role">Basso</div>
             </div>
             <div class="member-card">
+                <img src="img/bonac.png" style="width:100%; border-radius:5px;">
                 <h4>Andrea Bonacorsi</h4>
                 <div class="member-role">Chitarra</div>
             </div>
             <div class="member-card">
+                <img src="img/marco.png" style="width:100%; border-radius:5px;">
                 <h4>Marco Ricci</h4>
                 <div class="member-role">Chitarra</div>
             </div>
