@@ -126,6 +126,34 @@
             padding: 30px;
             color: #777;
         }
+        
+        /* --- Stile per i link nei testi delle canzoni (Schermo) --- */
+        .song-lyrics a {
+            color: inherit !important;      /* Eredita il colore del testo circostante (#f5eedc) */
+            text-decoration: underline !important; /* Forza la sottolineatura */
+            /*font-weight: bold !important;    /* Forza il grassetto */
+            transition: opacity 0.2s ease; /* Opzionale: un leggero effetto al passaggio del mouse */
+        }
+
+        /* Opzionale: Effetto al passaggio del mouse per far capire che è cliccabile */
+        .song-lyrics a:hover {
+            opacity: 0.7;
+        }
+
+        /* --- Stile per i link nella STAMPA (@media print) --- */
+        @media print {
+            .song-lyrics a {
+                color: #000000 !important;      /* In stampa lo vogliamo nero */
+                text-decoration: underline !important;
+                /*font-weight: bold !important;*/
+                background: transparent !important;
+            }
+            
+            /* Opzionale: Nascondere l'URL che alcuni browser aggiungono dopo il link in stampa */
+            .song-lyrics a[href]:after {
+                content: none !important;
+            }
+        }
 
         /* =========================================================
            2. REGOLE ESCLUSIVE PER LA STAMPA A4 (PDF o Carta)
