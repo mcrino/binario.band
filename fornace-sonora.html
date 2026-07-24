@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live @ Fornace Sonora - BINARIO</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    
+    <style>
+        :root {
+            --bg-color: #12100e;
+            --text-color: #f5eedc;
+            --accent-color: #fdecc5;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(253, 236, 197, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+
+        .logo-container img {
+            width: 240px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Scheda Info Evento */
+        .event-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .event-date {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .event-title {
+            font-size: 2rem;
+            margin: 10px 0 15px;
+            color: #ffffff;
+        }
+
+        .event-details {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        /* Pulsanti d'Azione */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Scaletta */
+        .setlist-section {
+            margin-top: 30px;
+        }
+
+        .setlist-title {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .setlist {
+            list-style: none;
+            counter-reset: song-counter;
+        }
+
+        .setlist li {
+            counter-increment: song-counter;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .setlist li:hover {
+            border-color: var(--accent-color);
+        }
+
+        .setlist a {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .setlist a::before {
+            content: counter(song-counter, decimal-leading-zero);
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-right: 15px;
+            opacity: 0.8;
+        }
+
+        .setlist a::after {
+            content: "Testo →";
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            opacity: 0.6;
+        }
+
+        .setlist li:hover a::after {
+            opacity: 1;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="img/logo.png" alt="BINARIO Logo"></a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <a href="index.html" class="nav-link">&larr; Torna alla Home</a>
+
+        <!-- SCHEDA INFO EVENTO -->
+        <div class="event-card">
+            <div class="event-date">Domenica 26 Luglio 2026 • Ore 21:30</div>
+            <h1 class="event-title">Live @ Fornace Sonora 2026</h1>
+            <div class="event-details">
+                📍 Circolo ARCI Le Fornaci<br>
+                🎟️ Ingresso Gratuito
+            </div>
+
+            <!-- LINK UTILI EVENTO -->
+            <div class="btn-group">
+                <a href="https://www.circololefornaci.it/" target="_blank" class="btn">
+                    📅 Il Circolo / Info
+                </a>
+                <a href="https://maps.app.goo.gl/XDhQvtkNYvWdY7xH9" target="_blank" class="btn">
+                    🗺️ Mappa & Navigatore
+                </a>
+            </div>
+        </div>
+
+        <!-- SCALETTA BRANI CON LINK AI TESTI -->
+        <div class="setlist-section">
+            <h2 class="setlist-title">Scaletta della serata</h2>
+            
+            <ol class="setlist">
+                <li><a href="testi/attico.html">Attico</a></li>
+                <li><a href="testi/dopo_tutto.html">Dopo tutto</a></li>
+                <li><a href="testi/carrefour.html">Carrefour</a></li>
+                <li><a href="testi/silvia.html">Silvia</a></li>
+                <li><a href="testi/bellezza.html">Bellezza</a></li>
+                <li><a href="testi/godot.html">Godot</a></li>
+            </ol>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BINARIO</p>
+    </footer>
+
+</body>
+</html>
