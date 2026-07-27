@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="it">
+<!-- SEO & Schema.org Event Data -->
+<meta name="description" content="Binario live al Mugello Sonoro Music Contest - Sabato 25 Luglio 2026 a Borgo San Lorenzo. Ingresso gratuito.">
+<meta property="og:title" content="Live @ Mugello Sonoro - BINARIO">
+<meta property="og:description" content="I Binario suonano dal vivo al Foro Boario di Borgo San Lorenzo.">
+<meta property="og:image" content="https://binario.band/img/band.png">
+<meta property="og:url" content="https://binario.band/eventi/mugello-sonoro.html">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "MusicEvent",
+    "name": "Binario Live @ Mugello Sonoro Music Contest",
+    "startDate": "2026-07-25T21:30:00+02:00",
+    "endDate": "2026-07-25T23:30:00+02:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+    "@type": "Place",
+    "name": "Foro Boario",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Foro Boario",
+        "addressLocality": "Borgo San Lorenzo",
+        "postalCode": "50032",
+        "addressRegion": "FI",
+        "addressCountry": "IT"
+    }
+    },
+    "image": [
+    "https://binario.band/img/band.png"
+    ],
+    "description": "Concerto live della band indie rock fiorentina Binario al Mugello Sonoro Music Contest.",
+    "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://binario.band/eventi/mugello-sonoro.html"
+    },
+    "performer": {
+    "@type": "MusicGroup",
+    "name": "Binario",
+    "url": "https://binario.band"
+    }
+}
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contest Mugello Sonoro 2026.">
+    <title>Live @ Mugello Sonoro - BINARIO</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    
+    <style>
+        /* --- NAVBAR GLOBALE BINARIO --- */
+        .main-nav {
+            background-color: rgba(18, 16, 14, 0.95);
+            border-bottom: 1px solid rgba(253, 236, 197, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px); /* Effetto sfocato elegante allo scorrimento */
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 30px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link-item {
+            color: #f5eedc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link-item:hover,
+        .nav-link-item.active {
+            color: #fdecc5;
+            border-bottom: 2px solid #fdecc5;
+        }
+
+        /* Tasto Menu Hamburger (Mobile) */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fdecc5;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive per Smartphone */
+        @media (max-width: 680px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #12100e;
+                border-bottom: 1px solid rgba(253, 236, 197, 0.2);
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+        }
+        :root {
+            --bg-color: #12100e;
+            --text-color: #f5eedc;
+            --accent-color: #fdecc5;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(253, 236, 197, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+
+        .logo-container img {
+            width: 240px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Scheda Info Evento */
+        .event-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .event-date {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .event-title {
+            font-size: 2rem;
+            margin: 10px 0 15px;
+            color: #ffffff;
+        }
+
+        .event-details {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        /* Pulsanti d'Azione */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Scaletta */
+        .setlist-section {
+            margin-top: 30px;
+        }
+
+        .setlist-title {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .setlist {
+            list-style: none;
+            counter-reset: song-counter;
+        }
+
+        .setlist li {
+            counter-increment: song-counter;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .setlist li:hover {
+            border-color: var(--accent-color);
+        }
+
+        .setlist a {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .setlist a::before {
+            content: counter(song-counter, decimal-leading-zero);
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-right: 15px;
+            opacity: 0.8;
+        }
+
+        .setlist a::after {
+            content: "Testo →";
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            opacity: 0.6;
+        }
+
+        .setlist li:hover a::after {
+            opacity: 1;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../img/logo-trasp.png" alt="BINARIO Logo">
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Apri Menu">
+                ☰
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link-item">Home</a></li>
+                <li><a href="../chi-siamo.html" class="nav-link-item">Chi Siamo</a></li>
+                <li><a href="../testi.html" class="nav-link-item">Testi</a></li>
+                <li><a href="../contatti.html" class="nav-link-item">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <div class="logo-container">
+            <a href="../index.html"><img src="../img/logo.png" alt="BINARIO Logo"></a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <a href="../index.html" class="nav-link">&larr; Torna alla Home</a>
+
+        <!-- SCHEDA INFO EVENTO -->
+        <div class="event-card">
+            <div class="event-date">Sabato 25 Luglio 2026 • Ore 21:30</div>
+            <h1 class="event-title">Live @ Mugello Sonoro Music Contest</h1>
+            <div class="event-details">
+                📍 Foro Boario - Borgo San Lorenzo<br>
+                🎟️ Ingresso Gratuito
+            </div>
+
+            <!-- LINK UTILI EVENTO -->
+            <div class="btn-group">
+                <a href="https://www.facebook.com/permalink.php?story_fbid=pfbid031oZhoe4iAciAzXnfiBs1SJZmiPmh7bYkg45qiFGxrCm65hDkHDixWgVmFz4L1giYl&id=61578601683224" target="_blank" class="btn">
+                    📅 Evento Facebook / Info
+                </a>
+                <a href="https://maps.app.goo.gl/ubrwG5a6gy4eozcw9" target="_blank" class="btn">
+                    🗺️ Mappa & Navigatore
+                </a>
+            </div>
+        </div>
+
+        <!-- SCALETTA BRANI CON LINK AI TESTI -->
+        <div class="setlist-section">
+            <h2 class="setlist-title">Scaletta della serata</h2>
+            
+            <ol class="setlist">
+                <li><a href="../testi/attico.html">Attico</a></li>
+                <li><a href="../testi/dopo_tutto.html">Dopo tutto</a></li>
+                <li><a href="../testi/carrefour.html">Carrefour</a></li>
+                <li><a href="../testi/silvia.html">Silvia</a></li>
+                <li><a href="../testi/bellezza.html">Bellezza</a></li>
+                <li><a href="../testi/godot.html">Godot</a></li>
+            </ol>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BINARIO</p>
+    </footer>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
