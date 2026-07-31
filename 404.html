@@ -291,7 +291,25 @@
     </style>
 </head>
 <body>
+    <!-- NAVBAR -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="img/logo-trasp.png" alt="BINARIO Logo">
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Apri Menu">
+                ☰
+            </button>
 
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link-item">Home</a></li>
+                <li><a href="chi-siamo.html" class="nav-link-item">Chi Siamo</a></li>
+                <li><a href="testi.html" class="nav-link-item">Testi</a></li>
+                <li><a href="contatti.html" class="nav-link-item">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
     <header>
         <div class="logo-container">
             <img src="img/logo.png" alt="BINARIO Logo">
@@ -306,7 +324,7 @@
                 <a href="https://instagram.com/binario_band" target="_blank" class="social-btn">Instagram</a>
                 <a href="https://www.youtube.com/@binario_band3762" target="_blank" class="social-btn">YouTube</a>
                 <a href="https://www.facebook.com/binaro.band" target="_blank" class="social-btn">Facebook</a>
-                <a href="mailto:info@binario.band" class="social-btn">Invia un'Email</a>
+                <a href="contatti.html" class="social-btn">Invia un'Email</a>
             </div>
         </section>
 
@@ -326,8 +344,17 @@
 
     <footer>
         <p>&copy; 2026 BINARIO. Tutti i diritti riservati.</p>
-        <p>Contatti: <a href="mailto:info@binario.band">info@binario.band</a></p>
+        <p>Contatti: <a href="contatti.html">Clicca qui</a></p>
     </footer>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
 
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>               
 </body>
 </html>
