@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I Binario sono una band fiorentina nata nel 2017. Sul palco portiamo canzoni rigorosamente artigianali, vere e quasi sempre inutili.">
+    <title>Chi Siamo - BINARIO</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <style>
+        /* =====================================================
+           BINARIO — Nuova Visual Identity (estate 2026)
+           Carta fotocopiata, giallo marker, carattere dattilografato,
+           simbolo "scala" al posto della A.
+           Palette: carta #f4f3ee · inchiostro #181510 · giallo #e9c13b
+                    oliva #454b41 · viola #74638f · carta opaca #a1b0c3
+           ===================================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap');
+
+        :root {
+            --paper: #f4f3ee;
+            --paper2: #eae8e0;
+            --card: #fbfaf6;
+            --ink: #181510;
+            --ink-soft: #565144;
+            --muted: #8a857a;
+            --yellow: #e9c13b;
+            --yellow-soft: rgba(233, 193, 59, 0.45);
+            --olive: #454b41;
+            --purple: #74638f;
+            --font-size-base: 16px;
+        }
+
+        /* Modalità alto contrasto: giallo su nero (sempre in identity) */
+        body.high-contrast {
+            --paper: #000000;
+            --paper2: #111111;
+            --card: #0a0a0a;
+            --ink: #ffff00;
+            --ink-soft: #f2f2f2;
+            --muted: #bbbbbb;
+            --yellow: #ffff00;
+            --yellow-soft: rgba(255, 255, 0, 0.35);
+            --olive: #ffff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Grana da fotocopia su tutta la pagina */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            pointer-events: none;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+        }
+        body.high-contrast::after { display: none; }
+
+        /* --- Classi tipografiche di identity --- */
+        .tw     { font-family: 'Special Elite', 'Courier New', monospace; }
+        .hand   { font-family: 'Caveat', cursive; }
+        .marker { font-family: 'Permanent Marker', cursive; }
+        .hl {
+            background: linear-gradient(100deg, transparent 1%, var(--yellow-soft) 4%, var(--yellow-soft) 96%, transparent 99%);
+            padding: 0 0.15em;
+        }
+
+        /* --- NAVBAR --- */
+        .main-nav {
+            background-color: var(--paper);
+            border-bottom: 2px solid var(--ink);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: baseline;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 200;
+            font-size: 1.3rem;
+            letter-spacing: 0.28em;
+            line-height: 1;
+        }
+
+        .nav-logo img {
+            height: 0.95em;
+            width: auto;
+            transform: translateY(0.13em) rotate(1.5deg);
+            margin: 0 0.05em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link-item {
+            color: var(--ink);
+            text-decoration: none;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 5px;
+            transition: background 0.2s ease;
+        }
+
+        .nav-link-item:hover,
+        .nav-link-item.active {
+            background: linear-gradient(100deg, transparent 1%, var(--yellow-soft) 4%, var(--yellow-soft) 96%, transparent 99%);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            color: var(--ink);
+            font-size: 1.1rem;
+            padding: 2px 10px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 680px) {
+            .nav-toggle { display: block; }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--paper);
+                border-bottom: 2px solid var(--ink);
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .nav-menu.active { display: flex; }
+        }
+
+        /* --- WORDMARK (logo a caratteri + scala) --- */
+        header {
+            text-align: center;
+            padding: 45px 20px 30px;
+        }
+
+        .wordmark {
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 200;
+            font-size: clamp(2.6rem, 10vw, 5rem);
+            letter-spacing: 0.3em;
+            line-height: 1;
+        }
+
+        .wordmark.small { font-size: clamp(2rem, 7vw, 3.2rem); }
+
+        .wordmark img {
+            height: 1.05em;
+            width: auto;
+            transform: translateY(0.17em) rotate(1.5deg);
+            margin: 0 0.03em;
+        }
+
+        .tagline {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            color: var(--ink-soft);
+            margin-top: 18px;
+            transform: rotate(-1.2deg);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* --- PULSANTI stile fanzine --- */
+        .btn {
+            display: inline-block;
+            border: 2px solid var(--ink);
+            background: var(--card);
+            color: var(--ink);
+            padding: 10px 22px;
+            text-decoration: none;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: 3px 3px 0 var(--ink);
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background: var(--yellow);
+            color: #181510;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--ink);
+        }
+
+        /* --- TITOLI DI SEZIONE --- */
+        .section-title {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 1.45rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ink);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 30px;
+            height: 11px;
+            background: var(--yellow);
+            transform: rotate(-2deg);
+            flex-shrink: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 45px 20px;
+            background: #181510;
+            color: #b9b3a6;
+            font-size: 0.85rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer .f-logo { height: 32px; width: auto; margin-bottom: 14px; }
+        footer .f-scala {
+            position: absolute;
+            right: 4%;
+            bottom: -35px;
+            height: 170px;
+            opacity: 0.08;
+            transform: rotate(6deg);
+        }
+        footer a { color: #e9c13b; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        .page-title {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 2rem;
+            color: var(--ink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-title::before {
+            content: "";
+            width: 34px;
+            height: 13px;
+            background: var(--yellow);
+            transform: rotate(-2deg);
+            flex-shrink: 0;
+        }
+
+        /* Foto di gruppo in stile polaroid */
+        .polaroid {
+            background: #ffffff;
+            border: 1px solid #ddd5c4;
+            padding: 14px 14px 52px;
+            box-shadow: 5px 8px 18px rgba(24, 21, 16, 0.18);
+            transform: rotate(-1deg);
+            margin: 35px 0;
+            position: relative;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: var(--paper2);
+            filter: contrast(1.05) saturate(0.92);
+        }
+
+        .polaroid figcaption {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: var(--ink-soft);
+        }
+
+        /* Le tre "stazioni" della storia della band */
+        .station {
+            background: var(--card);
+            border: 2px solid var(--ink);
+            padding: 26px 28px;
+            margin-bottom: 28px;
+            box-shadow: 5px 5px 0 rgba(24, 21, 16, 0.12);
+        }
+
+        .stations .station:nth-child(odd)  { transform: rotate(-0.4deg); }
+        .stations .station:nth-child(even) { transform: rotate(0.35deg); }
+
+        .station-head {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .station-head img { height: 24px; width: auto; transform: rotate(1.5deg); }
+
+        .station-head h3 {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.05rem;
+            color: var(--ink);
+        }
+
+        .station-head .st-date {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            color: var(--muted);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .station p { font-size: 1.05rem; line-height: 1.75; color: var(--ink); }
+
+        .pull-quote {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.6rem, 4.5vw, 2rem);
+            line-height: 1.3;
+            color: var(--ink);
+            border-left: 8px solid var(--yellow);
+            padding-left: 18px;
+            margin: 40px 0;
+            transform: rotate(-0.6deg);
+        }
+
+        /* --- FORMAZIONE: polaroid con nome a marker giallo --- */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            margin-top: 40px;
+        }
+
+        .member-card {
+            background: #ffffff;
+            border: 1px solid #ddd5c4;
+            padding: 12px 12px 16px;
+            box-shadow: 4px 6px 14px rgba(24, 21, 16, 0.15);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .members-grid .member-card:nth-child(3n+1) { transform: rotate(-1.4deg); }
+        .members-grid .member-card:nth-child(3n+2) { transform: rotate(1deg); }
+        .members-grid .member-card:nth-child(3n)   { transform: rotate(-0.7deg); }
+        .member-card:hover { transform: rotate(0deg) scale(1.02); }
+
+        .member-photo { position: relative; }
+
+        .member-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            background: var(--paper2);
+            filter: contrast(1.05) saturate(0.92);
+        }
+
+        .member-name {
+            position: absolute;
+            left: 8px;
+            bottom: 8px;
+            font-family: 'Permanent Marker', cursive;
+            color: #e9c13b;
+            font-size: 1.3rem;
+            transform: rotate(-3deg);
+            text-shadow: 1px 1px 0 rgba(24, 21, 16, 0.85);
+        }
+
+        .member-full { font-weight: 700; margin-top: 14px; font-size: 0.95rem; }
+
+        .member-role {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            color: var(--ink-soft);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" aria-label="BINARIO - Home">BIN<img src="img/scala-nera.png" alt="">RIO</a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Apri Menu">
+                ☰
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link-item">Home</a></li>
+                <li><a href="chi-siamo.html" class="nav-link-item active">Chi Siamo</a></li>
+                <li><a href="testi.html" class="nav-link-item">Testi</a></li>
+                <li><a href="contatti.html" class="nav-link-item">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <a href="index.html" class="wordmark small" aria-label="BINARIO - Home">BIN<img src="img/scala-nera.png" alt="">RIO</a>
+    </header>
+
+    <div class="container">
+
+        <h1 class="page-title">Chi Siamo</h1>
+
+        <figure class="polaroid">
+            <img src="img/band.png" alt="BINARIO Live" onerror="this.onerror=null; this.src='img/scala-nera.png'; this.style.objectFit='contain'; this.style.padding='30px';">
+            <figcaption>la band, dal vivo.</figcaption>
+        </figure>
+
+        <div class="stations">
+            <section class="station">
+                <div class="station-head">
+                    <img src="img/scala-nera.png" alt="">
+                    <h3>Stazione I</h3>
+                    <span class="st-date">// 2017</span>
+                </div>
+                <p>
+                    Da qualche parte in mezzo alle foreste sassoni, dove un binario taglia la regione collegando Berlino a Praga, Jacopo e Andrea decidono di fare una band. Hanno 21 anni, un basso e una chitarra. È il 2017.
+                </p>
+            </section>
+
+            <section class="station">
+                <div class="station-head">
+                    <img src="img/scala-nera.png" alt="">
+                    <h3>Stazione II</h3>
+                    <span class="st-date">// gli anni di mezzo</span>
+                </div>
+                <p>
+                    La legge di conservazione della massa vale anche per i Binario: la band negli anni muta ed evolve, cambiando più volte formazione. Qualcuno si aggiunge, qualcuno se ne va, qualcun altro ritorna. La materia, in qualche modo, si conserva.
+                </p>
+            </section>
+
+            <section class="station">
+                <div class="station-head">
+                    <img src="img/scala-nera.png" alt="">
+                    <h3>Stazione III</h3>
+                    <span class="st-date">// 2026</span>
+                </div>
+                <p>
+                    A marzo del 2026 la band trova il proprio equilibrio e raggiunge una formazione stabile. È il momento di uscire dalla sala prove e misurarsi con i primi palchi. I loro habitat naturali sono i circolini ARCI e le feste di paese. Il repertorio è fatto solo di brani originali in italiano, incastrati da qualche parte tra rock, indie e cantautorato.
+                </p>
+            </section>
+        </div>
+
+        <p class="pull-quote">
+            Sul palco portiamo canzoni rigorosamente artigianali, vere e quasi sempre inutili.
+        </p>
+
+        <!-- Schede Formazione / Componenti -->
+        <h2 class="page-title" style="font-size: 1.4rem;">La Formazione</h2>
+
+        <div class="members-grid">
+            <div class="member-card">
+                <div class="member-photo">
+                    <img src="img/matte.png" alt="Matteo Crinò" onerror="this.onerror=null; this.src='img/scala-nera.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    <span class="member-name">Matteo</span>
+                </div>
+                <div class="member-full">Matteo Crinò</div>
+                <div class="member-role">Voce</div>
+            </div>
+            <div class="member-card">
+                <div class="member-photo">
+                    <img src="img/lapo.png" alt="Lapo Querci" onerror="this.onerror=null; this.src='img/scala-nera.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    <span class="member-name">Lapo</span>
+                </div>
+                <div class="member-full">Lapo Querci</div>
+                <div class="member-role">Tastiere</div>
+            </div>
+            <div class="member-card">
+                <div class="member-photo">
+                    <img src="img/gazza.png" alt="Francesco Gazzaniga" onerror="this.onerror=null; this.src='img/scala-nera.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    <span class="member-name">Gazza</span>
+                </div>
+                <div class="member-full">Francesco Gazzaniga</div>
+                <div class="member-role">Batteria</div>
+            </div>
+            <div class="member-card">
+                <div class="member-photo">
+                    <img src="img/jack.png" alt="Jacopo D'Aniello" onerror="this.onerror=null; this.src='img/scala-nera.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    <span class="member-name">Jacopo</span>
+                </div>
+                <div class="member-full">Jacopo D'Aniello</div>
+                <div class="member-role">Basso</div>
+            </div>
+            <div class="member-card">
+                <div class="member-photo">
+                    <img src="img/bonac.png" alt="Andrea Bonacorsi" onerror="this.onerror=null; this.src='img/scala-nera.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    <span class="member-name">Andrea</span>
+                </div>
+                <div class="member-full">Andrea Bonacorsi</div>
+                <div class="member-role">Chitarra</div>
+            </div>
+            <div class="member-card">
+                <div class="member-photo">
+                    <img src="img/marco.png" alt="Marco Ricci" onerror="this.onerror=null; this.src='img/scala-nera.png'; this.style.objectFit='contain'; this.style.padding='20px';">
+                    <span class="member-name">Marco</span>
+                </div>
+                <div class="member-full">Marco Ricci</div>
+                <div class="member-role">Chitarra</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <img src="img/scala-bianca.png" alt="" class="f-scala">
+        <img src="img/logo-giallo.png" alt="BINARIO" class="f-logo">
+        <p>&copy; 2026 BINARIO</p>
+    </footer>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

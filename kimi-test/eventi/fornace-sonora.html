@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <!-- SEO & Schema.org Event Data -->
+    <meta name="description" content="Binario live a Fornace Sonora 2026 - Domenica 26 Luglio 2026 presso il Circolo ARCI Le Fornaci a Pistoia. Ingresso gratuito.">
+    <meta property="og:title" content="Live @ Fornace Sonora 2026 - BINARIO">
+    <meta property="og:description" content="I Binario dal vivo al Circolo ARCI Le Fornaci di Pistoia per Fornace Sonora 2026.">
+    <meta property="og:image" content="https://binario.band/img/band.png">
+    <meta property="og:url" content="https://binario.band/eventi/fornace-sonora.html">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicEvent",
+        "name": "Binario Live @ Fornace Sonora 2026",
+        "startDate": "2026-07-26T21:30:00+02:00",
+        "endDate": "2026-07-26T23:30:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+        "@type": "Place",
+        "name": "Circolo ARCI Le Fornaci",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Via del Fornacione 52",
+            "addressLocality": "Pistoia",
+            "postalCode": "51100",
+            "addressRegion": "PT",
+            "addressCountry": "IT"
+        }
+        },
+        "image": [
+        "https://binario.band/img/band.png"
+        ],
+        "description": "Concerto dal vivo dei Binario a Pistoia per la rassegna Fornace Sonora 2026.",
+        "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://binario.band/eventi/fornace-sonora.html"
+        },
+        "performer": {
+        "@type": "MusicGroup",
+        "name": "Binario",
+        "url": "https://binario.band"
+        }
+    }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live @ Fornace Sonora - BINARIO</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+
+    <style>
+        /* =====================================================
+           BINARIO — Nuova Visual Identity (estate 2026)
+           Carta fotocopiata, giallo marker, carattere dattilografato,
+           simbolo "scala" al posto della A.
+           Palette: carta #f4f3ee · inchiostro #181510 · giallo #e9c13b
+                    oliva #454b41 · viola #74638f · carta opaca #a1b0c3
+           ===================================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap');
+
+        :root {
+            --paper: #f4f3ee;
+            --paper2: #eae8e0;
+            --card: #fbfaf6;
+            --ink: #181510;
+            --ink-soft: #565144;
+            --muted: #8a857a;
+            --yellow: #e9c13b;
+            --yellow-soft: rgba(233, 193, 59, 0.45);
+            --olive: #454b41;
+            --purple: #74638f;
+            --font-size-base: 16px;
+        }
+
+        /* Modalità alto contrasto: giallo su nero (sempre in identity) */
+        body.high-contrast {
+            --paper: #000000;
+            --paper2: #111111;
+            --card: #0a0a0a;
+            --ink: #ffff00;
+            --ink-soft: #f2f2f2;
+            --muted: #bbbbbb;
+            --yellow: #ffff00;
+            --yellow-soft: rgba(255, 255, 0, 0.35);
+            --olive: #ffff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Grana da fotocopia su tutta la pagina */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            pointer-events: none;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+        }
+        body.high-contrast::after { display: none; }
+
+        /* --- Classi tipografiche di identity --- */
+        .tw     { font-family: 'Special Elite', 'Courier New', monospace; }
+        .hand   { font-family: 'Caveat', cursive; }
+        .marker { font-family: 'Permanent Marker', cursive; }
+        .hl {
+            background: linear-gradient(100deg, transparent 1%, var(--yellow-soft) 4%, var(--yellow-soft) 96%, transparent 99%);
+            padding: 0 0.15em;
+        }
+
+        /* --- NAVBAR --- */
+        .main-nav {
+            background-color: var(--paper);
+            border-bottom: 2px solid var(--ink);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: baseline;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 200;
+            font-size: 1.3rem;
+            letter-spacing: 0.28em;
+            line-height: 1;
+        }
+
+        .nav-logo img {
+            height: 0.95em;
+            width: auto;
+            transform: translateY(0.13em) rotate(1.5deg);
+            margin: 0 0.05em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link-item {
+            color: var(--ink);
+            text-decoration: none;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 5px;
+            transition: background 0.2s ease;
+        }
+
+        .nav-link-item:hover,
+        .nav-link-item.active {
+            background: linear-gradient(100deg, transparent 1%, var(--yellow-soft) 4%, var(--yellow-soft) 96%, transparent 99%);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            color: var(--ink);
+            font-size: 1.1rem;
+            padding: 2px 10px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 680px) {
+            .nav-toggle { display: block; }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--paper);
+                border-bottom: 2px solid var(--ink);
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .nav-menu.active { display: flex; }
+        }
+
+        /* --- WORDMARK (logo a caratteri + scala) --- */
+        header {
+            text-align: center;
+            padding: 45px 20px 30px;
+        }
+
+        .wordmark {
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 200;
+            font-size: clamp(2.6rem, 10vw, 5rem);
+            letter-spacing: 0.3em;
+            line-height: 1;
+        }
+
+        .wordmark.small { font-size: clamp(2rem, 7vw, 3.2rem); }
+
+        .wordmark img {
+            height: 1.05em;
+            width: auto;
+            transform: translateY(0.17em) rotate(1.5deg);
+            margin: 0 0.03em;
+        }
+
+        .tagline {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            color: var(--ink-soft);
+            margin-top: 18px;
+            transform: rotate(-1.2deg);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* --- PULSANTI stile fanzine --- */
+        .btn {
+            display: inline-block;
+            border: 2px solid var(--ink);
+            background: var(--card);
+            color: var(--ink);
+            padding: 10px 22px;
+            text-decoration: none;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: 3px 3px 0 var(--ink);
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background: var(--yellow);
+            color: #181510;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--ink);
+        }
+
+        /* --- TITOLI DI SEZIONE --- */
+        .section-title {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 1.45rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ink);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 30px;
+            height: 11px;
+            background: var(--yellow);
+            transform: rotate(-2deg);
+            flex-shrink: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 45px 20px;
+            background: #181510;
+            color: #b9b3a6;
+            font-size: 0.85rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer .f-logo { height: 32px; width: auto; margin-bottom: 14px; }
+        footer .f-scala {
+            position: absolute;
+            right: 4%;
+            bottom: -35px;
+            height: 170px;
+            opacity: 0.08;
+            transform: rotate(6deg);
+        }
+        footer a { color: #e9c13b; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--ink);
+            text-decoration: none;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover { background: var(--yellow-soft); }
+
+        /* --- LOCANDINA EVENTO --- */
+        .event-card {
+            background: var(--card);
+            border: 3px solid var(--ink);
+            box-shadow: 7px 7px 0 rgba(24, 21, 16, 0.15);
+            padding: 32px 28px;
+            margin-bottom: 40px;
+            text-align: center;
+            transform: rotate(-0.4deg);
+            position: relative;
+        }
+
+        .event-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 12px;
+            background: var(--yellow);
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .event-date {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            color: var(--olive);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        .event-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 12px 0 18px;
+            color: var(--ink);
+        }
+
+        .event-title .hl { padding: 0 8px; }
+
+        .event-details {
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: var(--ink-soft);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- SCALETTA --- */
+        .setlist-section { margin-top: 30px; }
+
+        .setlist {
+            list-style: none;
+            counter-reset: song-counter;
+        }
+
+        .setlist li {
+            counter-increment: song-counter;
+            background: var(--card);
+            border: 2px solid var(--ink);
+            box-shadow: 3px 3px 0 rgba(24, 21, 16, 0.12);
+            margin-bottom: 12px;
+            transition: all 0.15s ease;
+        }
+
+        .setlist li:nth-child(odd)  { transform: rotate(-0.3deg); }
+        .setlist li:nth-child(even) { transform: rotate(0.25deg); }
+
+        .setlist li:hover {
+            transform: translateX(5px) rotate(0deg);
+            box-shadow: 5px 5px 0 rgba(24, 21, 16, 0.18);
+        }
+
+        .setlist a {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .setlist a::before {
+            content: counter(song-counter, decimal-leading-zero);
+            font-family: 'Special Elite', 'Courier New', monospace;
+            color: var(--olive);
+            font-size: 0.9rem;
+            background: var(--yellow-soft);
+            padding: 0 6px;
+            margin-right: 15px;
+        }
+
+        .setlist a::after {
+            content: "Testo \2192";
+            margin-left: auto;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            opacity: 0.6;
+        }
+
+        .setlist li:hover a::after { opacity: 1; }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo" aria-label="BINARIO - Home">BIN<img src="../img/scala-nera.png" alt="">RIO</a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Apri Menu">
+                ☰
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link-item">Home</a></li>
+                <li><a href="../chi-siamo.html" class="nav-link-item">Chi Siamo</a></li>
+                <li><a href="../testi.html" class="nav-link-item">Testi</a></li>
+                <li><a href="../contatti.html" class="nav-link-item">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <a href="../index.html" class="wordmark small" aria-label="BINARIO - Home">BIN<img src="../img/scala-nera.png" alt="">RIO</a>
+    </header>
+
+    <div class="container">
+
+        <a href="../index.html" class="nav-link">&larr; Torna alla Home</a>
+
+        <!-- LOCANDINA EVENTO -->
+        <div class="event-card">
+            <div class="event-date">Domenica 26 Luglio 2026 &bull; Ore 21:30</div>
+            <h1 class="event-title">Live @ <span class="hl">Fornace Sonora</span> 2026</h1>
+            <div class="event-details">
+                Circolo ARCI Le Fornaci, Pistoia<br>
+                Ingresso gratuito
+            </div>
+
+            <!-- LINK UTILI EVENTO -->
+            <div class="btn-group">
+                <a href="https://www.circololefornaci.it/" target="_blank" class="btn">
+                    Il Circolo / Info
+                </a>
+                <a href="https://maps.app.goo.gl/XDhQvtkNYvWdY7xH9" target="_blank" class="btn">
+                    Mappa &amp; Navigatore
+                </a>
+            </div>
+        </div>
+
+        <!-- SCALETTA BRANI CON LINK AI TESTI -->
+        <div class="setlist-section">
+            <h2 class="section-title">Scaletta della serata</h2>
+
+            <ol class="setlist">
+                <li><a href="../testi/attico.html">Attico</a></li>
+                <li><a href="../testi/dopo_tutto.html">Dopo tutto</a></li>
+                <li><a href="../testi/carrefour.html">Carrefour</a></li>
+                <li><a href="../testi/silvia.html">Silvia</a></li>
+                <li><a href="../testi/bellezza.html">Bellezza</a></li>
+                <li><a href="../testi/godot.html">Godot</a></li>
+            </ol>
+        </div>
+
+    </div>
+
+    <footer>
+        <img src="../img/scala-bianca.png" alt="" class="f-scala">
+        <img src="../img/logo-giallo.png" alt="BINARIO" class="f-logo">
+        <p>&copy; 2026 BINARIO</p>
+    </footer>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

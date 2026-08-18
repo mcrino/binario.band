@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binario Band</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <!-- FONT: nuova identità visiva Binario (logo/etichette manoscritte + corpo pulito) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- SEO BASE -->
+    <meta name="description" content="Sito ufficiale dei BINARIO, band Indie Rock fiorentina. Canzoni originali in italiano, rigorosamente artigianali, vere e quasi sempre inutili.">
+    <meta name="keywords" content="Binario band, indie rock firenze, musica emergente firenze, concerti firenze, musica italiana">
+    <meta name="author" content="Binario">
+    <link rel="canonical" href="https://binario.band/">
+
+    <!-- OPEN GRAPH (WhatsApp, Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://binario.band/">
+    <meta property="og:title" content="BINARIO | Band Indie Rock Fiorentina">
+    <meta property="og:description" content="Canzoni rigorosamente artigianali, vere e quasi sempre inutili. Scopri la band, le date dei concerti e i testi.">
+    <meta property="og:image" content="https://binario.band/img/band.png">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BINARIO | Band Indie Rock Fiorentina">
+    <meta name="twitter:description" content="Canzoni rigorosamente artigianali, vere e quasi sempre inutili. Scopri la band, le date dei concerti e i testi.">
+    <meta name="twitter:image" content="https://binario.band/img/band.png">
+
+    <!-- DATI STRUTTURATI SCHEMA.ORG (Google MusicGroup) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Binario",
+      "url": "https://binario.band",
+      "logo": "https://binario.band/img/logo.png",
+      "image": "https://binario.band/img/band.png",
+      "description": "Band indie/rock fiorentina nata nel 2017. Repertorio originale in italiano tra rock, indie e cantautorato.",
+      "genre": ["Indie Rock", "Cantautorato", "Alternative Rock"],
+      "sameAs": [
+        "https://instagram.com/binario_band",
+        "https://www.youtube.com/@binario_band3762",
+        "https://www.facebook.com/binaro.band"
+      ],
+      "member": [
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Matteo Crinò" }, "roleName": "Voce" },
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Lapo Querci" }, "roleName": "Tastiere" },
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Francesco Gazzaniga" }, "roleName": "Batteria" },
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Jacopo D'Aniello" }, "roleName": "Basso" },
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Andrea Bonacorsi" }, "roleName": "Chitarra" },
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Marco Ricci" }, "roleName": "Chitarra" }
+      ]
+    }
+    </script>
+
+    <style>
+        /* =========================================================
+           NUOVA IDENTITÀ VISIVA BINARIO — 2026
+           Ispirata al binario/scaletta del logo e ai post social:
+           nero pieno, giallo ocra acceso, e tre colori "etichetta"
+           (blu polvere, verde oliva, prugna) usati come accenti.
+           ========================================================= */
+        :root {
+            --bg: #12100e;
+            --text: #f5eedc;
+            --gold: #f2c230;          /* accento principale, ocra acceso */
+            --gold-soft: #fdecc5;     /* crema, usato per testo su nero */
+            --muted: #bfae93;
+            --border: rgba(242, 194, 48, 0.22);
+            --tag-blue: #a9bccb;
+            --tag-olive: #5a6a4d;
+            --tag-plum: #8d7a9e;
+            --font-mark: 'Permanent Marker', cursive;   /* firma / titoli */
+            --font-hand: 'Caveat', cursive;              /* etichette manoscritte */
+            --font-body: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Piccola icona "binario" (le traversine della A del logo),
+           usata come separatore/firma ricorrente in tutto il sito */
+        .track-icon {
+            display: inline-block;
+            width: 22px;
+            height: 16px;
+            vertical-align: middle;
+            opacity: 0.85;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Cpath d='M15 38 L25 2 M35 2 L45 38 M12 30 H48 M15 20 H45 M18 10 H42' stroke='%23f2c230' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        /* --- NAVBAR GLOBALE BINARIO --- */
+        .main-nav {
+            background-color: rgba(18, 16, 14, 0.95);
+            border-bottom: 1px solid rgba(242, 194, 48, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px); /* Effetto sfocato elegante allo scorrimento */
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 30px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link-item {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link-item:hover,
+        .nav-link-item.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        /* Tasto Menu Hamburger (Mobile) */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive per Smartphone */
+        @media (max-width: 680px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--bg);
+                border-bottom: 1px solid rgba(242, 194, 48, 0.2);
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-body);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            background-image:
+                radial-gradient(circle at 15% 8%, rgba(242,194,48,0.05), transparent 40%),
+                radial-gradient(circle at 85% 90%, rgba(141,122,158,0.06), transparent 45%);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+            width: 450px; /* Dimensione ottimale logo orizzontale */
+            filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.7));
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* --- SOCIAL LINKS --- */
+        .social-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-btn {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background-color: var(--gold);
+            color: var(--bg);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(242, 194, 48, 0.3);
+        }
+
+        /* --- SEZIONE EVENTI --- */
+        .section-title {
+            font-family: var(--font-mark);
+            font-weight: normal;
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+            color: var(--gold);
+            border-bottom: 2px solid rgba(242, 194, 48, 0.2);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .events-list {
+            margin-bottom: 50px;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .event-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .event-details {
+            flex-grow: 1;
+            padding-right: 20px;
+        }
+
+        .event-date {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .event-title {
+            font-family: var(--font-mark);
+            font-weight: normal;
+            font-size: 1.15rem;
+            margin: 6px 0;
+        }
+
+        .event-location {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .event-btn {
+            background-color: var(--gold);
+            color: var(--bg);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .event-btn:hover {
+            background-color: #fff8e7;
+            transform: scale(1.03);
+        }
+
+        /* Eventi passati con opacità ridotta */
+        .past-events .event-card {
+            border-left-color: #666;
+            opacity: 0.6;
+        }
+
+        .past-events .event-date {
+            color: #aaa;
+        }
+
+        .past-events .event-btn {
+            background-color: #555;
+            color: #eee;
+        }
+
+        .past-events .event-btn:hover {
+            background-color: #666;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            color: #777;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .event-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .event-btn {
+                width: 100%;
+                text-align: center;
+            }
+            .logo-container img {
+                width: 85%;
+            }
+        }
+
+        /* --- BANNER PROSSIMO LIVE --- */
+        .live-banner {
+            background: linear-gradient(90deg, var(--gold) 0%, var(--text) 100%);
+            color: var(--bg);
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(242, 194, 48, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .live-banner a {
+            color: var(--bg);
+            text-decoration: underline;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            background: rgba(18, 16, 14, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+
+        .live-banner a:hover {
+            background: rgba(18, 16, 14, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- BANNER AVVISO PROSSIMO LIVE -->
+    <div class="live-banner">
+        <span>🚨 <strong>PROSSIMO LIVE:</strong> Le date dei prossimi eventi sono in arrivo! Resta sintonizzato.</span>
+        <!-- Quando avrai una data confermata, sostituisci la riga sopra con questa qui sotto: -->
+        <!-- <span>🔥 <strong>PROSSIMO LIVE:</strong> Venerdì 15 Agosto @ Firenze Indie Festival!</span> <a href="eventi/nome-evento.html">Scopri Dettagli &rarr;</a> -->
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="img/logo-trasp.png" alt="BINARIO Logo">
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Apri Menu">
+                ☰
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link-item">Home</a></li>
+                <li><a href="chi-siamo.html" class="nav-link-item">Chi Siamo</a></li>
+                <li><a href="testi.html" class="nav-link-item">Testi</a></li>
+                <li><a href="contatti.html" class="nav-link-item">Contattaci</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="BINARIO Logo">
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section class="social-section">
+            <div class="social-links">
+                <!--a href="https://open.spotify.com" target="_blank" class="social-btn">Spotify</a-->
+                <a href="https://instagram.com/binario_band" target="_blank" class="social-btn">Instagram</a>
+                <a href="https://www.youtube.com/@binario_band3762" target="_blank" class="social-btn">YouTube</a>
+                <a href="https://www.facebook.com/binaro.band" target="_blank" class="social-btn">Facebook</a>
+                <a href="contatti.html" class="social-btn">Scrivici</a>
+            </div>
+        </section>
+        <!-- Sezione Chi Siamo (Home Page) -->
+        <section class="about-preview" style="
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 12px 12px 0;
+            padding: 30px 25px;
+            margin-bottom: 50px;
+            transition: background 0.3s ease;
+        ">
+            <span style="
+                display: inline-block;
+                font-family: var(--font-hand);
+                font-size: 1.3rem;
+                color: var(--tag-plum);
+                margin-bottom: 4px;
+            ">(il gruppo)</span>
+            <h2 style="
+                color: var(--gold); 
+                font-family: var(--font-mark);
+                font-weight: normal;
+                font-size: 1.5rem; 
+                margin-bottom: 15px;
+                letter-spacing: 0.5px;
+                border-bottom: 1px solid rgba(242, 194, 48, 0.15);
+                padding-bottom: 8px;
+            ">
+                Chi Siamo
+            </h2>
+            <p style="
+                color: var(--text); 
+                font-size: 1.05rem; 
+                line-height: 1.7; 
+                margin-bottom: 20px;
+            ">
+                Nati nel 2017 su un treno diretto a Praga, i <strong>BINARIO</strong> sono una band fiorentina in continuo movimento.
+            </p>
+            <div>
+                <a href="chi-siamo.html" class="event-btn" style="
+                    display: inline-block;
+                    padding: 10px 24px;
+                    font-size: 0.95rem;
+                ">
+                    Leggi di più &rarr;
+                </a>
+            </div>
+        </section>
+        <!-- Banner Testi Canzoni -->
+        <section class="lyrics-banner" style="
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(242, 194, 48, 0.2);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        ">
+            <span style="
+                display: inline-block;
+                font-family: var(--font-hand);
+                font-size: 1.3rem;
+                color: var(--tag-olive);
+                margin-bottom: 2px;
+            ">(le parole)</span>
+            <h3 style="
+                color: var(--gold); 
+                font-family: var(--font-mark);
+                font-weight: normal;
+                font-size: 1.4rem; 
+                margin-bottom: 10px;
+                letter-spacing: 0.5px;
+            ">
+                Testi delle canzoni
+            </h3>
+            <p style="
+                color: var(--muted); 
+                margin-bottom: 20px; 
+                font-size: 0.95rem;
+            ">
+                Vuoi cantare con noi o sfogliare i testi dei nostri brani?
+            </p>
+            <div>
+                <a href="testi.html" class="event-btn" style="
+                    display: inline-block;
+                    padding: 12px 28px;
+                    font-size: 1rem;
+                ">
+                    Sfoglia l'indice dei testi &rarr;
+                </a>
+            </div>
+        </section>
+        <section class="events-section">
+            <h2 class="section-title"><span class="track-icon"></span>Prossimi Eventi</h2>
+            <div class="events-list">
+                <p style="color: var(--muted); font-style: italic; padding: 10px 0;">
+                    Al momento stiamo sgranando accordi in sala prove. Le prossime date usciranno a breve: rimani sintonizzato o seguici sui Social!
+                </p>
+                <!--div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Sabato 25 Luglio 2026</div>
+                        <div class="event-title">Contest Mugello Sonoro</div>
+                        <div class="event-location">Borgo San Lorenzo</div>
+                    </div>
+                    <a href="mugello-sonoro.html" target="_blank" class="event-btn">Dettagli Evento</a>
+                </div-->
+
+                
+
+            </div>
+        </section>
+
+        <section class="events-section past-events">
+            <h2 class="section-title"><span class="track-icon"></span>Eventi Passati</h2>
+            <div class="events-list">
+                
+                <div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Domenica 26 Luglio 2026</div>
+                        <div class="event-title">Contest Fornace Sonora</div>
+                        <div class="event-location">Pistoia - Circolo ARCI Le Fornaci</div>
+                    </div>
+                    <a href="eventi/fornace-sonora.html" target="_blank" class="event-btn">Dettagli Evento</a>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Sabato 25 Luglio 2026</div>
+                        <div class="event-title">Contest Mugello Sonoro</div>
+                        <div class="event-location">Borgo San Lorenzo</div>
+                    </div>
+                    <a href="eventi/mugello-sonoro.html" class="event-btn">Dettagli Evento</a>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Venerdì 03 Luglio 2026</div>
+                        <div class="event-title">Pullulat - Dove viaggiano le Storie</div>
+                        <div class="event-location">Circolo SMS San Michele a Torri</div>
+                    </div>
+                    <a href="https://www.instagram.com/p/DZhTqy1DJFD/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" class="event-btn">Dettagli Evento</a>
+                </div>
+                <div class="event-card">
+                    <div class="event-details">
+                        <div class="event-date">Sabato 18 Aprile 2026</div>
+                        <div class="event-title">Concerto per la Palestina</div>
+                        <div class="event-location">Centro Sociale "Il Pozzo"</div>
+                    </div>
+                    <a href="https://www.instagram.com/p/DZhTqy1DJFD/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" class="event-btn">Dettagli Evento</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BINARIO. Tutti i diritti riservati. • <a href="privacy.html" style="color: inherit;">Privacy Policy</a></p>
+        <p>Contatti: <a href="contatti.html">Clicca qui</a></p>
+    </footer>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
