@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leggi i testi delle canzoni dei Binario e canta con noi!">
+    <title>Binario - Testi</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <style>
+        /* =====================================================
+           BINARIO — Nuova Visual Identity (estate 2026)
+           Carta fotocopiata, giallo marker, carattere dattilografato,
+           simbolo "scala" al posto della A.
+           Palette: carta #f4f3ee · inchiostro #181510 · giallo #e9c13b
+                    oliva #454b41 · viola #74638f · carta opaca #a1b0c3
+           ===================================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap');
+
+        :root {
+            --paper: #f4f3ee;
+            --paper2: #eae8e0;
+            --card: #fbfaf6;
+            --ink: #181510;
+            --ink-soft: #565144;
+            --muted: #8a857a;
+            --yellow: #e9c13b;
+            --yellow-soft: rgba(233, 193, 59, 0.45);
+            --olive: #454b41;
+            --purple: #74638f;
+            --font-size-base: 16px;
+        }
+
+        /* Modalità alto contrasto: giallo su nero (sempre in identity) */
+        body.high-contrast {
+            --paper: #000000;
+            --paper2: #111111;
+            --card: #0a0a0a;
+            --ink: #ffff00;
+            --ink-soft: #f2f2f2;
+            --muted: #bbbbbb;
+            --yellow: #ffff00;
+            --yellow-soft: rgba(255, 255, 0, 0.35);
+            --olive: #ffff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Grana da fotocopia su tutta la pagina */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            pointer-events: none;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+        }
+        body.high-contrast::after { display: none; }
+
+        /* --- Classi tipografiche di identity --- */
+        .tw     { font-family: 'Special Elite', 'Courier New', monospace; }
+        .hand   { font-family: 'Caveat', cursive; }
+        .marker { font-family: 'Permanent Marker', cursive; }
+        .hl {
+            background: linear-gradient(100deg, transparent 1%, var(--yellow-soft) 4%, var(--yellow-soft) 96%, transparent 99%);
+            padding: 0 0.15em;
+        }
+
+        /* --- NAVBAR --- */
+        .main-nav {
+            background-color: var(--paper);
+            border-bottom: 2px solid var(--ink);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: baseline;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 200;
+            font-size: 1.3rem;
+            letter-spacing: 0.28em;
+            line-height: 1;
+        }
+
+        .nav-logo img {
+            height: 0.95em;
+            width: auto;
+            transform: translateY(0.13em) rotate(1.5deg);
+            margin: 0 0.05em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link-item {
+            color: var(--ink);
+            text-decoration: none;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 5px;
+            transition: background 0.2s ease;
+        }
+
+        .nav-link-item:hover,
+        .nav-link-item.active {
+            background: linear-gradient(100deg, transparent 1%, var(--yellow-soft) 4%, var(--yellow-soft) 96%, transparent 99%);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            color: var(--ink);
+            font-size: 1.1rem;
+            padding: 2px 10px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 680px) {
+            .nav-toggle { display: block; }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--paper);
+                border-bottom: 2px solid var(--ink);
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            .nav-menu.active { display: flex; }
+        }
+
+        /* --- WORDMARK (logo a caratteri + scala) --- */
+        header {
+            text-align: center;
+            padding: 45px 20px 30px;
+        }
+
+        .wordmark {
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--ink);
+            font-weight: 200;
+            font-size: clamp(2.6rem, 10vw, 5rem);
+            letter-spacing: 0.3em;
+            line-height: 1;
+        }
+
+        .wordmark.small { font-size: clamp(2rem, 7vw, 3.2rem); }
+
+        .wordmark img {
+            height: 1.05em;
+            width: auto;
+            transform: translateY(0.17em) rotate(1.5deg);
+            margin: 0 0.03em;
+        }
+
+        .tagline {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            color: var(--ink-soft);
+            margin-top: 18px;
+            transform: rotate(-1.2deg);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* --- PULSANTI stile fanzine --- */
+        .btn {
+            display: inline-block;
+            border: 2px solid var(--ink);
+            background: var(--card);
+            color: var(--ink);
+            padding: 10px 22px;
+            text-decoration: none;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            box-shadow: 3px 3px 0 var(--ink);
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background: var(--yellow);
+            color: #181510;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--ink);
+        }
+
+        /* --- TITOLI DI SEZIONE --- */
+        .section-title {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 1.45rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--ink);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 30px;
+            height: 11px;
+            background: var(--yellow);
+            transform: rotate(-2deg);
+            flex-shrink: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 45px 20px;
+            background: #181510;
+            color: #b9b3a6;
+            font-size: 0.85rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer .f-logo { height: 32px; width: auto; margin-bottom: 14px; }
+        footer .f-scala {
+            position: absolute;
+            right: 4%;
+            bottom: -35px;
+            height: 170px;
+            opacity: 0.08;
+            transform: rotate(6deg);
+        }
+        footer a { color: #e9c13b; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* --- BARRA CONTROLLI ACCESSIBILITÀ --- */
+        .accessibility-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 2px solid var(--ink);
+            box-shadow: 3px 3px 0 rgba(24, 21, 16, 0.12);
+            padding: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+
+        .acc-btn {
+            background-color: transparent;
+            color: var(--ink);
+            border: 2px solid var(--ink);
+            padding: 4px 12px;
+            cursor: pointer;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.85rem;
+            transition: all 0.15s;
+        }
+
+        .acc-btn:hover { background-color: var(--yellow); color: #181510; }
+
+        /* --- LISTA BRANI: schede fotocopiate --- */
+        .song-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            counter-reset: song-counter;
+        }
+
+        .song-item a {
+            counter-increment: song-counter;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card);
+            border: 2px solid var(--ink);
+            border-left: 10px solid var(--yellow);
+            box-shadow: 3px 3px 0 rgba(24, 21, 16, 0.12);
+            padding: 16px 20px;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 1.15rem;
+            font-weight: 600;
+            transition: all 0.15s ease;
+        }
+
+        .song-item a::before {
+            content: counter(song-counter, decimal-leading-zero);
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--olive);
+            background: var(--yellow-soft);
+            padding: 0 6px;
+            margin-right: 14px;
+        }
+
+        .song-item a span:first-of-type { flex-grow: 1; }
+
+        .song-item a:hover {
+            transform: translateX(5px);
+            box-shadow: 5px 5px 0 rgba(24, 21, 16, 0.18);
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--ink);
+            text-decoration: none;
+            font-family: 'Special Elite', 'Courier New', monospace;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover { background: var(--yellow-soft); }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" aria-label="BINARIO - Home">BIN<img src="img/scala-nera.png" alt="">RIO</a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Apri Menu">
+                ☰
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link-item">Home</a></li>
+                <li><a href="chi-siamo.html" class="nav-link-item">Chi Siamo</a></li>
+                <li><a href="testi.html" class="nav-link-item active">Testi</a></li>
+                <li><a href="contatti.html" class="nav-link-item">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <a href="index.html" class="wordmark small" aria-label="BINARIO - Home">BIN<img src="img/scala-nera.png" alt="">RIO</a>
+    </header>
+
+    <div class="container">
+
+        <a href="index.html" class="nav-link">&larr; Torna alla Home</a>
+
+        <!-- Controlli Accessibilità -->
+        <div class="accessibility-bar">
+            <span>Accessibilità:</span>
+            <button class="acc-btn" onclick="changeFontSize(-2)">A-</button>
+            <button class="acc-btn" onclick="changeFontSize(2)">A+</button>
+            <button class="acc-btn" onclick="toggleContrast()">Alto Contrasto</button>
+        </div>
+
+        <h1 class="section-title">Indice dei Testi</h1>
+
+        <ul class="song-list">
+            <li class="song-item">
+                <a href="testi/attico.html">
+                    <span>Attico</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+            <li class="song-item">
+                <a href="testi/bellezza.html">
+                    <span>Bellezza</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+            <li class="song-item">
+                <a href="testi/carrefour.html">
+                    <span>Carrefour</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+            <li class="song-item">
+                <a href="testi/dopo_tutto.html">
+                    <span>Dopo tutto</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+            <li class="song-item">
+                <a href="testi/godot.html">
+                    <span>Godot</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+            <li class="song-item">
+                <a href="testi/siamo_fatti.html">
+                    <span>(siamo) fatti per star bene</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+            <li class="song-item">
+                <a href="testi/silvia.html">
+                    <span>Silvia</span>
+                    <span>&rarr;</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <footer>
+        <img src="img/scala-bianca.png" alt="" class="f-scala">
+        <img src="img/logo-giallo.png" alt="BINARIO" class="f-logo">
+        <p>&copy; 2026 BINARIO</p>
+    </footer>
+
+    <!-- JavaScript per Ridimensionare Font e Alternare Contrasto -->
+    <script>
+        let currentFontSize = 16;
+
+        function changeFontSize(delta) {
+            currentFontSize += delta;
+            if(currentFontSize < 12) currentFontSize = 12;
+            if(currentFontSize > 28) currentFontSize = 28;
+            document.body.style.setProperty('--font-size-base', currentFontSize + 'px');
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+    </script>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BINARIO — Band Indie Rock Fiorentina</title>
+<meta name="description" content="Sito ufficiale dei BINARIO, band Indie Rock fiorentina. Canzoni originali in italiano, rigorosamente artigianali, vere e quasi sempre inutili.">
+<meta name="keywords" content="Binario band, indie rock firenze, musica emergente firenze, concerti firenze, musica italiana">
+<meta name="author" content="Binario">
+<link rel="canonical" href="https://binario.band/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://binario.band/">
+<meta property="og:title" content="BINARIO | Band Indie Rock Fiorentina">
+<meta property="og:description" content="Canzoni rigorosamente artigianali, vere e quasi sempre inutili. Scopri la band, le date dei concerti e i testi.">
+<meta property="og:image" content="assets/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/glyph-yellow.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@400;600;700&family=Archivo:ital,wght@0,400;0,600;0,800;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#171410;
+  --paper:#f3edde;
+  --paper2:#ece4d0;
+  --yellow:#f7c94c;
+  --yellow-soft:rgba(247,201,76,.55);
+  --blue:#8e9bb3;
+  --purple:#6b5b8c;
+  --olive:#3b3b33;
+  --red:#c4452b;
+  --marker:'Permanent Marker',cursive;
+  --hand:'Caveat',cursive;
+  --body:'Archivo',sans-serif;
+  --type:'Special Elite',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+::selection{background:var(--yellow);color:var(--ink)}
+::-webkit-scrollbar{width:12px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--yellow);border-radius:6px;border:3px solid var(--ink)}
+
+/* ====== texture carta ====== */
+.paper-tex{position:relative}
+.paper-tex::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ====== NAV ====== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;
+  background:rgba(23,20,16,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--yellow);
+  transition:padding .3s;
+}
+nav .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+nav .brand img{height:30px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+nav .links{display:flex;gap:6px;list-style:none}
+nav .links a{
+  color:var(--paper);text-decoration:none;font-weight:800;font-size:.8rem;
+  text-transform:uppercase;letter-spacing:2px;padding:8px 14px;border-radius:4px;
+  transition:all .2s;position:relative;
+}
+nav .links a:hover{background:var(--yellow);color:var(--ink);transform:rotate(-1.5deg)}
+.burger{display:none;background:none;border:none;cursor:pointer;z-index:1001}
+.burger span{display:block;width:26px;height:3px;background:var(--yellow);margin:5px 0;transition:.3s;border-radius:2px}
+@media(max-width:820px){
+  .burger{display:block}
+  nav .links{
+    position:fixed;top:0;right:-100%;height:100vh;width:min(75vw,320px);
+    background:var(--ink);flex-direction:column;justify-content:center;gap:18px;
+    padding:40px;transition:right .4s cubic-bezier(.7,0,.3,1);
+    border-left:3px solid var(--yellow);
+  }
+  nav .links.open{right:0}
+  nav .links a{font-size:1.2rem}
+  body.menu-open .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  body.menu-open .burger span:nth-child(2){opacity:0}
+  body.menu-open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+}
+
+/* ====== HERO ====== */
+.hero{
+  position:relative;min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  background:var(--ink);overflow:hidden;padding:100px 20px 80px;
+}
+.hero-bg{
+  position:absolute;inset:-10%;background:url('assets/hero.jpg') center/cover no-repeat;
+  opacity:.45;will-change:transform;
+}
+.hero-grain{
+  position:absolute;inset:0;opacity:.35;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+.hero-fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,20,16,.55) 0%,rgba(23,20,16,.15) 45%,rgba(23,20,16,.95) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:900px}
+.hero-logo{width:min(680px,88vw);filter:drop-shadow(0 10px 30px rgba(0,0,0,.6));animation:logoIn 1.2s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes logoIn{from{opacity:0;transform:translateY(40px) rotate(-3deg) scale(.9)}to{opacity:1;transform:none}}
+.hero-tag{
+  font-family:var(--hand);font-size:clamp(1.4rem,3.4vw,2.1rem);color:var(--paper);
+  margin-top:18px;animation:logoIn 1.2s .3s cubic-bezier(.2,.9,.3,1.2) both;
+}
+.hero-tag mark{background:transparent;color:var(--yellow);position:relative;font-weight:700}
+.hero-sub{
+  font-family:var(--type);color:#b9ac90;font-size:.85rem;letter-spacing:3px;
+  text-transform:uppercase;margin-top:22px;animation:logoIn 1.2s .5s both;
+}
+.hero-cta{margin-top:38px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:logoIn 1.2s .65s both}
+.btn{
+  display:inline-block;font-family:var(--body);font-weight:800;text-transform:uppercase;
+  letter-spacing:2px;font-size:.85rem;text-decoration:none;cursor:pointer;border:none;
+  padding:15px 30px;transition:transform .2s, box-shadow .2s;
+}
+.btn-y{background:var(--yellow);color:var(--ink);box-shadow:5px 5px 0 rgba(247,201,76,.25)}
+.btn-y:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:8px 8px 0 rgba(247,201,76,.35)}
+.btn-o{background:transparent;color:var(--paper);border:2px solid var(--paper)}
+.btn-o:hover{background:var(--paper);color:var(--ink);transform:rotate(1deg)}
+.scroll-hint{
+  position:absolute;bottom:110px;left:50%;transform:translateX(-50%);z-index:2;
+  color:var(--yellow);font-family:var(--hand);font-size:1.3rem;opacity:.85;
+  animation:bob 2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+/* ====== MARQUEE ====== */
+.marquee{
+  position:relative;z-index:3;background:var(--yellow);color:var(--ink);
+  transform:rotate(-1.2deg);margin:-28px -20px 0;padding:12px 0;overflow:hidden;
+  border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+.marquee-track{display:flex;width:max-content;animation:marq 22s linear infinite}
+.marquee span{
+  font-family:var(--marker);font-size:1.15rem;white-space:nowrap;padding:0 18px;
+  display:flex;align-items:center;gap:18px;
+}
+.marquee img{height:20px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ====== SEZIONI ====== */
+section{position:relative;padding:100px 20px}
+.wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.sec-kicker{
+  font-family:var(--type);font-size:.8rem;letter-spacing:4px;text-transform:uppercase;
+  color:#8a7d60;display:flex;align-items:center;gap:14px;margin-bottom:10px;
+}
+.sec-kicker::before{content:"";width:44px;height:2px;background:var(--yellow)}
+.sec-title{
+  font-family:var(--marker);font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05;
+  margin-bottom:14px;position:relative;display:inline-block;
+}
+.sec-title .hl{position:relative;z-index:0;white-space:nowrap}
+.sec-title .hl::after{
+  content:"";position:absolute;left:-3%;right:-3%;bottom:6%;height:42%;z-index:-1;
+  background:var(--yellow-soft);transform:rotate(-1deg);border-radius:3px;
+}
+.sec-note{font-family:var(--hand);font-size:1.35rem;color:#6e6250;max-width:640px;margin-bottom:50px}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(34px) rotate(.4deg);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ====== STORIA / STAZIONI ====== */
+#storia{background:var(--paper)}
+.timeline{position:relative;margin-top:20px}
+.track-line{
+  position:absolute;left:29px;top:0;bottom:0;width:8px;
+  background:
+    repeating-linear-gradient(180deg,var(--ink) 0 3px,transparent 3px 26px) left/2px 100% no-repeat,
+    repeating-linear-gradient(180deg,var(--ink) 0 3px,transparent 3px 26px) right/2px 100% no-repeat,
+    repeating-linear-gradient(180deg,var(--ink) 0 14px,transparent 14px 26px) center/8px 100% no-repeat;
+  opacity:.8;
+}
+.stazione{
+  position:relative;padding:0 0 60px 90px;max-width:720px;
+}
+.stazione:last-child{padding-bottom:0}
+.stazione .dot{
+  position:absolute;left:8px;top:6px;width:50px;height:50px;background:var(--ink);
+  border:3px solid var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
+}
+.stazione .dot img{width:24px}
+.stazione .num{
+  font-family:var(--type);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--red);
+  margin-bottom:6px;font-weight:bold;
+}
+.stazione h3{font-family:var(--marker);font-size:1.7rem;margin-bottom:10px}
+.stazione p{font-size:1.02rem;max-width:600px}
+.stazione .year{
+  position:absolute;right:0;top:0;font-family:var(--marker);font-size:clamp(2.4rem,7vw,4.2rem);
+  color:transparent;-webkit-text-stroke:1.5px rgba(23,20,16,.22);line-height:1;user-select:none;
+}
+@media(max-width:640px){.stazione .year{position:static;display:block;margin-bottom:8px}}
+.manifesto{
+  margin-top:70px;background:var(--ink);color:var(--paper);padding:44px 40px;position:relative;
+  transform:rotate(-.6deg);box-shadow:10px 10px 0 rgba(23,20,16,.15);
+}
+.manifesto::before,.manifesto::after{
+  content:"";position:absolute;width:110px;height:30px;background:rgba(247,201,76,.75);
+  top:-14px;left:36px;transform:rotate(-4deg);box-shadow:0 2px 5px rgba(0,0,0,.2);
+}
+.manifesto::after{left:auto;right:36px;transform:rotate(3deg)}
+.manifesto p{font-family:var(--hand);font-size:clamp(1.5rem,3.6vw,2.2rem);line-height:1.35;text-align:center}
+.manifesto p em{color:var(--yellow);font-style:normal}
+
+/* ====== BAND ====== */
+#band{background:var(--ink);color:var(--paper)}
+#band .sec-kicker{color:#8f8672}
+#band .sec-note{color:#a99e88}
+.polaroids{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:44px 30px;margin-top:20px}
+.polaroid{
+  background:#fdfbf4;padding:12px 12px 8px;position:relative;
+  box-shadow:0 12px 30px rgba(0,0,0,.45);transition:transform .35s cubic-bezier(.2,.9,.3,1.3),box-shadow .35s;
+}
+.polaroid:nth-child(odd){transform:rotate(-2deg)}
+.polaroid:nth-child(even){transform:rotate(1.8deg)}
+.polaroid:nth-child(3n){transform:rotate(-1deg)}
+.polaroid:hover{transform:rotate(0) scale(1.04);box-shadow:0 22px 44px rgba(0,0,0,.55);z-index:5}
+.polaroid::before{
+  content:"";position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:96px;height:28px;background:rgba(247,201,76,.8);box-shadow:0 2px 5px rgba(0,0,0,.25);z-index:2;
+}
+.polaroid img{width:100%;aspect-ratio:216/272;object-fit:cover;filter:saturate(1.05);display:block}
+.polaroid .cap{padding:12px 4px 8px;text-align:center}
+.polaroid .cap .nm{font-family:var(--hand);font-weight:700;font-size:1.7rem;color:var(--ink);line-height:1.1}
+.polaroid .cap .nick{font-family:var(--hand);font-size:1.15rem;color:var(--red)}
+.polaroid .cap .role{
+  font-family:var(--type);font-size:.7rem;letter-spacing:3px;text-transform:uppercase;
+  color:#7a6f57;margin-top:6px;
+}
+.group-shot{
+  margin-top:70px;position:relative;transform:rotate(.8deg);
+  background:#fdfbf4;padding:14px 14px 54px;max-width:760px;margin-left:auto;margin-right:auto;
+  box-shadow:0 16px 44px rgba(0,0,0,.5);
+}
+.group-shot img{width:100%;display:block}
+.group-shot figcaption{
+  position:absolute;bottom:12px;left:0;right:0;text-align:center;
+  font-family:var(--hand);font-size:1.5rem;color:var(--ink);
+}
+.group-shot::before{
+  content:"";position:absolute;top:-16px;left:8%;width:120px;height:32px;
+  background:rgba(247,201,76,.85);transform:rotate(-3deg);box-shadow:0 2px 6px rgba(0,0,0,.3);
+}
+
+/* ====== TESTI ====== */
+#testi{background:var(--paper2)}
+.lyrics-intro{display:flex;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.song-index{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.song-card{
+  position:relative;background:#fdfbf4;border:none;text-align:left;cursor:pointer;
+  padding:22px 22px 20px 30px;font-family:var(--body);
+  box-shadow:4px 6px 0 rgba(23,20,16,.12);transition:transform .25s,box-shadow .25s;
+  border-left:5px solid var(--yellow);overflow:hidden;
+}
+.song-card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
+  background:repeating-linear-gradient(180deg,transparent 0 30px,rgba(139,171,206,.22) 30px 31px);
+  background-position:0 8px;
+}
+.song-card:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:6px 12px 0 rgba(23,20,16,.16)}
+.song-card .no{font-family:var(--type);font-size:.72rem;letter-spacing:3px;color:#978a6c;text-transform:uppercase}
+.song-card .tt{font-family:var(--marker);font-size:1.45rem;margin:4px 0 2px;color:var(--ink)}
+.song-card .st{font-family:var(--hand);font-size:1.15rem;color:#6e6250}
+.song-card .go{
+  position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  font-family:var(--marker);color:var(--yellow);font-size:1.4rem;opacity:0;transition:opacity .25s;
+  text-shadow:0 1px 0 rgba(0,0,0,.15);
+}
+.song-card:hover .go{opacity:1}
+.song-card.soon{cursor:default;opacity:.75}
+.song-card.soon:hover{transform:none}
+.song-card.soon .go{display:none}
+.badge-soon{
+  display:inline-block;font-family:var(--type);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;
+  border:1.5px dashed var(--red);color:var(--red);padding:3px 8px;border-radius:3px;margin-top:8px;transform:rotate(-1.5deg);
+}
+.scribble-deco{position:absolute;pointer-events:none;opacity:.9}
+
+/* ====== MODAL TESTO ====== */
+.modal{
+  position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;
+  padding:20px;background:rgba(23,20,16,.7);backdrop-filter:blur(4px);
+}
+.modal.open{display:flex}
+.sheet{
+  background:#fdfbf4;width:min(720px,100%);max-height:88vh;overflow-y:auto;position:relative;
+  padding:52px clamp(26px,6vw,64px) 60px;box-shadow:0 30px 80px rgba(0,0,0,.6);
+  background-image:repeating-linear-gradient(180deg,transparent 0 35px,rgba(139,171,206,.25) 35px 36px);
+  background-position:0 30px;transform:rotate(.3deg);
+}
+.sheet::before{
+  content:"";position:absolute;top:0;bottom:0;left:clamp(18px,4vw,40px);width:2px;
+  background:rgba(196,69,43,.35);
+}
+.sheet h3{font-family:var(--marker);font-size:2rem;margin-bottom:4px;padding-left:14px}
+.sheet .sub{font-family:var(--type);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:#978a6c;padding-left:14px;margin-bottom:26px}
+.sheet .lyrics{font-family:var(--hand);font-size:var(--lfs,1.45rem);line-height:36px;white-space:pre-line;color:#2a2519;padding-left:14px}
+.sheet .lyrics strong{color:var(--ink);background:linear-gradient(transparent 55%,var(--yellow-soft) 55%);font-weight:700}
+.sheet .excerpt-note{font-family:var(--hand);font-size:1.15rem;color:var(--red);padding-left:14px;margin-bottom:10px}
+.sheet-close{
+  position:sticky;top:0;float:right;background:var(--ink);color:var(--yellow);border:none;cursor:pointer;
+  font-family:var(--marker);font-size:1rem;padding:8px 16px;z-index:5;
+}
+.sheet-close:hover{background:var(--yellow);color:var(--ink)}
+.acc-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;padding-left:14px;clear:both}
+.acc-btn{
+  background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:5px 13px;cursor:pointer;
+  font-family:var(--type);font-size:.75rem;letter-spacing:1px;transition:.2s;
+}
+.acc-btn:hover{background:var(--yellow)}
+.print-header{display:none}
+
+/* ====== LIVE ====== */
+#live{background:var(--ink);color:var(--paper)}
+#live .sec-kicker{color:#8f8672}
+#live .sec-note{color:#a99e88}
+.next-banner{
+  border:2.5px dashed var(--yellow);padding:34px 30px;text-align:center;margin-bottom:56px;
+  position:relative;transform:rotate(-.4deg);background:rgba(247,201,76,.05);
+}
+.next-banner .big{font-family:var(--marker);font-size:clamp(1.4rem,4vw,2rem);color:var(--yellow);margin-bottom:8px}
+.next-banner p{color:#c9bfa8;font-size:1rem}
+.next-banner a{color:var(--yellow);font-weight:800}
+.gig{
+  display:flex;gap:26px;align-items:stretch;padding:26px 0;border-bottom:1px dashed rgba(243,237,222,.2);
+  transition:background .2s;
+}
+.gig:hover{background:rgba(247,201,76,.04)}
+.gig .date{
+  min-width:110px;text-align:center;background:var(--paper);color:var(--ink);padding:14px 8px;
+  transform:rotate(-1.5deg);align-self:flex-start;box-shadow:4px 4px 0 rgba(247,201,76,.25);
+}
+.gig .date .d{font-family:var(--marker);font-size:1.9rem;line-height:1}
+.gig .date .m{font-family:var(--type);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.gig .info h4{font-family:var(--marker);font-size:1.35rem;font-weight:400;margin-bottom:4px}
+.gig .info .where{font-family:var(--hand);font-size:1.2rem;color:var(--yellow)}
+.gig .info .extra{color:#a99e88;font-size:.9rem;margin-top:6px}
+.gig .acts{margin-left:auto;display:flex;flex-direction:column;gap:8px;justify-content:center}
+.gig .acts a{
+  color:var(--ink);background:var(--yellow);text-decoration:none;font-weight:800;font-size:.72rem;
+  letter-spacing:2px;text-transform:uppercase;padding:8px 14px;white-space:nowrap;transition:transform .2s;
+}
+.gig .acts a:hover{transform:rotate(-2deg) scale(1.05)}
+.gig .acts a.ghost{background:transparent;color:var(--paper);border:1.5px solid rgba(243,237,222,.4)}
+@media(max-width:700px){.gig{flex-wrap:wrap}.gig .acts{margin-left:0;flex-direction:row;flex-wrap:wrap}}
+.setlist-box{
+  margin-top:60px;background:var(--paper);color:var(--ink);padding:40px clamp(24px,5vw,50px);
+  transform:rotate(.5deg);box-shadow:12px 12px 0 rgba(247,201,76,.18);position:relative;
+}
+.setlist-box::before{
+  content:"";position:absolute;top:-15px;left:50%;transform:translateX(-50%) rotate(1.5deg);
+  width:130px;height:30px;background:rgba(247,201,76,.85);box-shadow:0 2px 6px rgba(0,0,0,.25);
+}
+.setlist-box h3{font-family:var(--marker);font-size:1.6rem;margin-bottom:6px}
+.setlist-box .ev{font-family:var(--type);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:#978a6c;margin-bottom:24px}
+.setlist{list-style:none;counter-reset:trk}
+.setlist li{border-bottom:1.5px dashed rgba(23,20,16,.18)}
+.setlist a{
+  display:flex;align-items:baseline;gap:16px;padding:13px 6px;color:var(--ink);text-decoration:none;
+  font-family:var(--hand);font-size:1.5rem;font-weight:600;transition:background .2s,padding-left .2s;
+}
+.setlist a::before{
+  counter-increment:trk;content:counter(trk,decimal-leading-zero);
+  font-family:var(--type);font-size:.75rem;color:var(--red);
+}
+.setlist a:hover{background:var(--yellow-soft);padding-left:14px}
+.setlist a .arr{margin-left:auto;font-family:var(--type);font-size:.68rem;letter-spacing:2px;color:#978a6c;text-transform:uppercase}
+
+/* ====== CONTATTI ====== */
+#contatti{background:var(--paper)}
+.social-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px}
+.soc{
+  display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);
+  background:#fdfbf4;padding:16px 24px;font-weight:800;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;
+  box-shadow:5px 5px 0 rgba(23,20,16,.15);border:2px solid var(--ink);transition:.2s;
+}
+.soc:hover{background:var(--yellow);transform:translate(-2px,-2px) rotate(-1deg);box-shadow:8px 8px 0 rgba(23,20,16,.2)}
+.soc svg{width:22px;height:22px}
+.booking{
+  margin-top:50px;background:var(--ink);color:var(--paper);padding:36px clamp(24px,5vw,44px);
+  transform:rotate(-.5deg);box-shadow:10px 10px 0 rgba(23,20,16,.14);max-width:720px;
+}
+.booking h3{font-family:var(--marker);color:var(--yellow);font-size:1.5rem;margin-bottom:10px;font-weight:400}
+.booking p{color:#d6ccb6}
+.booking a{color:var(--yellow)}
+
+/* ====== FOOTER ====== */
+footer{
+  background:var(--ink);color:#8f8672;text-align:center;padding:46px 20px 40px;position:relative;overflow:hidden;
+}
+footer .flogo{width:150px;opacity:.9;margin-bottom:14px}
+footer p{font-size:.85rem}
+footer .fnote{font-family:var(--hand);font-size:1.2rem;color:var(--yellow);margin-top:10px}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <a class="brand" href="#top"><img src="assets/logo.png" alt="BINARIO"></a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="links" id="navlinks">
+    <li><a href="#storia">Storia</a></li>
+    <li><a href="#band">La Band</a></li>
+    <li><a href="#testi">Testi</a></li>
+    <li><a href="#live">Live</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-fade"></div>
+  <div class="hero-inner">
+    <img class="hero-logo" src="assets/logo.png" alt="BINARIO — logo">
+    <p class="hero-tag">Canzoni rigorosamente artigianali, vere<br>e <mark>quasi sempre inutili</mark>.</p>
+    <p class="hero-sub">Indie Rock · Firenze · dal 2017</p>
+    <div class="hero-cta">
+      <a class="btn btn-y" href="#live">Prossimi live</a>
+      <a class="btn btn-o" href="#testi">Canta con noi</a>
+    </div>
+  </div>
+  <div class="scroll-hint">scendi ↓</div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mtrack"></div>
+</div>
+
+<!-- ============ STORIA ============ -->
+<section id="storia" class="paper-tex">
+  <div class="wrap">
+    <p class="sec-kicker rv">Da qualche parte tra Berlino e Praga</p>
+    <h2 class="sec-title rv">La storia, in <span class="hl">tre stazioni</span></h2>
+    <p class="sec-note rv">Ogni band che si rispetti ha un diario di bordo. Il nostro inizia su un treno.</p>
+
+    <div class="timeline">
+      <div class="track-line" aria-hidden="true"></div>
+
+      <article class="stazione rv">
+        <div class="dot"><img src="assets/glyph-yellow.png" alt=""></div>
+        <span class="year">2017</span>
+        <p class="num">Stazione I — La partenza</p>
+        <h3>Un basso, una chitarra, un treno</h3>
+        <p>Da qualche parte in mezzo alle foreste sassoni, dove un binario taglia la regione collegando Berlino a Praga, <strong>Jacopo e Andrea decidono di fare una band</strong>. Hanno 21 anni, un basso e una chitarra. È il 2017.</p>
+      </article>
+
+      <article class="stazione rv">
+        <div class="dot"><img src="assets/glyph-yellow.png" alt=""></div>
+        <span class="year">~</span>
+        <p class="num">Stazione II — Le coincidenze</p>
+        <h3>La materia si conserva</h3>
+        <p>La legge di conservazione della massa vale anche per i Binario: la band negli anni <strong>muta ed evolve</strong>, cambiando più volte formazione. Qualcuno si aggiunge, qualcuno se ne va, qualcun altro ritorna. La materia, in qualche modo, si conserva.</p>
+      </article>
+
+      <article class="stazione rv">
+        <div class="dot"><img src="assets/glyph-yellow.png" alt=""></div>
+        <span class="year">2026</span>
+        <p class="num">Stazione III — Il binario giusto</p>
+        <h3>Fuori dalla sala prove</h3>
+        <p>A marzo del 2026 la band trova il proprio equilibrio e raggiunge una <strong>formazione stabile</strong>. È il momento di uscire dalla sala prove e misurarsi con i primi palchi. I loro habitat naturali sono i circolini ARCI e le feste di paese.</p>
+      </article>
+    </div>
+
+    <div class="manifesto rv">
+      <p>Repertorio solo originale, in italiano, incastrato da qualche parte tra <em>rock, indie e cantautorato</em>. Sul palco portiamo canzoni rigorosamente artigianali, vere e quasi sempre inutili.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BAND ============ -->
+<section id="band">
+  <div class="wrap">
+    <p class="sec-kicker rv">Sei fermate obbligatorie</p>
+    <h2 class="sec-title rv" style="color:var(--paper)">La <span class="hl">formazione</span></h2>
+    <p class="sec-note rv">Trovati per caso, tenuti apposta. Da marzo 2026, questa è la quadra.</p>
+
+    <div class="polaroids">
+      <figure class="polaroid rv">
+        <img src="assets/matteo.jpg" alt="Matteo Crinò — voce">
+        <figcaption class="cap"><div class="nm">Matteo Crinò</div><div class="nick">«il magneto»</div><div class="role">Voce</div></figcaption>
+      </figure>
+      <figure class="polaroid rv">
+        <img src="assets/lapo.jpg" alt="Lapo Querci — tastiere">
+        <figcaption class="cap"><div class="nm">Lapo Querci</div><div class="nick">«il maestro»</div><div class="role">Tastiere</div></figcaption>
+      </figure>
+      <figure class="polaroid rv">
+        <img src="assets/gazza.jpg" alt="Francesco Gazzaniga — batteria">
+        <figcaption class="cap"><div class="nm">Francesco Gazzaniga</div><div class="nick">«Gazza»</div><div class="role">Batteria</div></figcaption>
+      </figure>
+      <figure class="polaroid rv">
+        <img src="assets/jacopo.jpg" alt="Jacopo D'Aniello — basso">
+        <figcaption class="cap"><div class="nm">Jacopo D'Aniello</div><div class="nick">«il lello»</div><div class="role">Basso</div></figcaption>
+      </figure>
+      <figure class="polaroid rv">
+        <img src="assets/andrea.jpg" alt="Andrea Bonacorsi — chitarra">
+        <figcaption class="cap"><div class="nm">Andrea Bonacorsi</div><div class="nick">«il bonac»</div><div class="role">Chitarra</div></figcaption>
+      </figure>
+      <figure class="polaroid rv">
+        <img src="assets/marco.jpg" alt="Marco Ricci — chitarra">
+        <figcaption class="cap"><div class="nm">Marco Ricci</div><div class="nick">«il sommo»</div><div class="role">Chitarra</div></figcaption>
+      </figure>
+    </div>
+
+    <figure class="group-shot rv">
+      <img src="assets/band.jpg" alt="I Binario al completo">
+      <figcaption>la banda al completo — appunti dal binario</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ TESTI ============ -->
+<section id="testi" class="paper-tex">
+  <img class="scribble-deco" src="assets/scribbles.png" alt="" style="top:40px;right:2%;width:190px;transform:rotate(8deg)">
+  <div class="wrap">
+    <p class="sec-kicker rv">Il quaderno dei testi</p>
+    <h2 class="sec-title rv">Canta <span class="hl">con noi</span></h2>
+    <p class="sec-note rv">Tutti i testi dei nostri brani, scritti a mano e sottolineati col giallo. Apri una pagina, alza il volume, sbaglia pure le parole: tanto le abbiamo scritte noi e le sbagliamo anche noi.</p>
+
+    <div class="song-index" id="songIndex"></div>
+  </div>
+</section>
+
+<!-- ============ LIVE ============ -->
+<section id="live">
+  <div class="wrap">
+    <p class="sec-kicker rv">Biglietteria di stazione</p>
+    <h2 class="sec-title rv" style="color:var(--paper)">Sul <span class="hl">binario live</span></h2>
+
+    <div class="next-banner rv">
+      <div class="big">Prossime date in arrivo</div>
+      <p>Al momento stiamo sgranando accordi in sala prove. Le prossime date usciranno a breve: resta sintonizzato o seguici su <a href="https://instagram.com/binario_band" target="_blank" rel="noopener">Instagram</a>.</p>
+    </div>
+
+    <p class="sec-kicker rv">Fermate già fatte</p>
+
+    <div class="gig rv">
+      <div class="date"><div class="d">26</div><div class="m">Lug 2026 · Dom</div></div>
+      <div class="info">
+        <h4>Contest Fornace Sonora 2026</h4>
+        <div class="where">Circolo ARCI Le Fornaci — Pistoia</div>
+        <div class="extra">Ore 21:30 · Ingresso gratuito · Via del Fornacione 52</div>
+      </div>
+      <div class="acts">
+        <a href="https://www.circololefornaci.it/" target="_blank" rel="noopener">Il Circolo</a>
+        <a class="ghost" href="https://maps.app.goo.gl/XDhQvtkNYvWdY7xH9" target="_blank" rel="noopener">Mappa</a>
+      </div>
+    </div>
+
+    <div class="gig rv">
+      <div class="date"><div class="d">25</div><div class="m">Lug 2026 · Sab</div></div>
+      <div class="info">
+        <h4>Contest Mugello Sonoro</h4>
+        <div class="where">Borgo San Lorenzo (FI)</div>
+      </div>
+    </div>
+
+    <div class="gig rv">
+      <div class="date"><div class="d">03</div><div class="m">Lug 2026 · Ven</div></div>
+      <div class="info">
+        <h4>Pullulat — Dove viaggiano le Storie</h4>
+        <div class="where">Circolo SMS San Michele a Torri</div>
+      </div>
+      <div class="acts">
+        <a href="https://www.instagram.com/p/DZhTqy1DJFD/" target="_blank" rel="noopener">Recap</a>
+      </div>
+    </div>
+
+    <div class="gig rv">
+      <div class="date"><div class="d">18</div><div class="m">Apr 2026 · Sab</div></div>
+      <div class="info">
+        <h4>Concerto per la Palestina</h4>
+        <div class="where">Centro Sociale «Il Pozzo»</div>
+      </div>
+      <div class="acts">
+        <a href="https://www.instagram.com/p/DZhTqy1DJFD/" target="_blank" rel="noopener">Recap</a>
+      </div>
+    </div>
+
+    <div class="setlist-box rv">
+      <h3>Scaletta — Fornace Sonora</h3>
+      <p class="ev">26.07.2026 · Circolo ARCI Le Fornaci, Pistoia · tocca un brano per leggerne il testo</p>
+      <ol class="setlist" id="setlist"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<section id="contatti" class="paper-tex">
+  <div class="wrap">
+    <p class="sec-kicker rv">Ultima fermata</p>
+    <h2 class="sec-title rv">Sali <span class="hl">a bordo</span></h2>
+    <p class="sec-note rv">Booking, collaborazioni, o anche solo per dirci che la prossima volta la cantate più forte voi di noi.</p>
+
+    <div class="social-row rv">
+      <a class="soc" href="https://instagram.com/binario_band" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a class="soc" href="https://www.youtube.com/@binario_band3762" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.4-.4-5c-.2-.9-.9-1.6-1.8-1.8C19.2 4.8 12 4.8 12 4.8s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.2.9.9 1.6 1.8 1.8 1.6.4 8.8.4 8.8.4s7.2 0 8.8-.4c-.9-.2 1.6-.9 1.8-1.8.4-1.6.4-5 .4-5zM9.8 15.3V8.7l6 3.3-6 3.3z"/></svg>
+        YouTube
+      </a>
+      <a class="soc" href="https://www.facebook.com/binaro.band" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        Facebook
+      </a>
+    </div>
+
+    <div class="booking rv">
+      <h3>Vuoi i Binario al tuo festival, circolo o festa di paese?</h3>
+      <p>Scrivici su <a href="https://instagram.com/binario_band" target="_blank" rel="noopener">Instagram</a> o passa a trovarci a un live: siamo quelli sudati vicino al palco. Anzi, sul palco.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <img class="flogo" src="assets/logo.png" alt="BINARIO">
+  <p>© 2026 BINARIO — Tutti i diritti riservati. Biglietti non rimborsabili, emozioni sì.</p>
+  <p class="fnote">fatto a mano, come le nostre canzoni.</p>
+</footer>
+
+<!-- ============ MODAL TESTI ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="sheet" id="sheet">
+    <div class="print-header"><img src="assets/logo-black.png" alt="BINARIO"><span>quaderno dei testi — binario.band</span></div>
+    <button class="sheet-close" id="sheetClose">chiudi ✕</button>
+    <div class="acc-bar">
+      <button class="acc-btn" data-acc="minus">A−</button>
+      <button class="acc-btn" data-acc="plus">A+</button>
+      <button class="acc-btn" data-acc="print">Stampa</button>
+    </div>
+    <h3 id="sheetTitle"></h3>
+    <p class="sub">Binario — quaderno dei testi</p>
+    <p class="excerpt-note" id="sheetNote" style="display:none">— estratto dal quaderno, il resto lo finiamo di scrivere —</p>
+    <div class="lyrics" id="sheetLyrics"></div>
+  </div>
+</div>
+
+<script>
+/* ================= DATI ================= */
+const SONGS = [
+  { id:'attico', title:'Attico', status:'Pronto da cantare', excerpt:false,
+    lyrics:`Ho costruito un attico in mezzo ad un sogno
+Puzza ancora di nuovo ma la vista è bellissima.
+È una vista da re
+
+Guarda là, si vede il mare
+il sole che muore sotto di noi
+una barca squarcia in due la scena:
+addipana il filo dei pensieri tuoi
+
+Distrattamente ne prendo un capo
+il sogno scema e me ne resto qua.
+Distrattamente ne prendo un capo,
+il sogno scema e me ne resto qua
+nell'oscurità
+
+<strong>Oggi non è più tempo per noi
+Mi fermo a pensare, ma sono in ritardo
+e oggi non è più tempo per noi
+Mi fermo a pensare, ma sono distratto.</strong>
+
+Ma ogni tenebra in fondo costruisce la luce
+e se vuoi puoi vederci la guerra e la pace
+puoi sentirti più bella, puoi provare piacere,
+puoi vederti bambina e sentirti felice
+
+Distrattamente ne prendo un capo
+il sogno scema e me ne resto qua.
+Distrattamente ne prendo un capo
+il sogno scema e me ne resto qua
+
+<strong>Oggi non è più tempo per noi
+Mi fermo a pensare, ma sono in ritardo
+e oggi non è più tempo per noi
+Mi fermo a pensare, ma sono distratto.</strong>` },
+  { id:'bellezza', title:'Bellezza', status:'Estratto dal quaderno', excerpt:true,
+    lyrics:`E crescono le ortiche
+su quel muretto in cui
+ci sentivamo grandi.` },
+  { id:'carrefour', title:'Carrefour', status:'Estratto dal quaderno', excerpt:true,
+    lyrics:`Noi siamo soltanto percezione
+c'è così tanto che non si può capire
+come ad esempio i tuoi modi di fare
+così bizzarri
+
+Il mondo è solo immaginazione
+ed è soltanto dentro la nostra testa
+
+<strong>Mi scoppia la testa
+c'è in corso una rissa dentro me
+che ha la testa una bomba
+un pensiero fisso: insomma, te.</strong>` },
+  { id:'dopotutto', title:'Dopo tutto', status:'In arrivo', soon:true },
+  { id:'godot', title:'Godot', status:'In arrivo', soon:true },
+  { id:'siamofatti', title:'(siamo) fatti per star bene', status:'Estratto dal quaderno', excerpt:true,
+    lyrics:`Siamo fatti per star bene
+per la sabbia e per la spiga
+per essere l'equilibrio che
+sta dietro ad ogni cosa
+
+<strong>Siamo fatti per star bene
+siamo fatti per uscire.</strong>` },
+  { id:'silvia', title:'Silvia', status:'In arrivo', soon:true },
+];
+
+const SETLIST = ['attico','dopotutto','carrefour','silvia','bellezza','godot'];
+
+/* ================= NAV mobile ================= */
+const burger = document.getElementById('burger');
+const navlinks = document.getElementById('navlinks');
+burger.addEventListener('click', () => {
+  navlinks.classList.toggle('open');
+  document.body.classList.toggle('menu-open');
+});
+navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navlinks.classList.remove('open');
+  document.body.classList.remove('menu-open');
+}));
+
+/* ================= MARQUEE ================= */
+const mtrack = document.getElementById('mtrack');
+const item = `<span>BINARIO <img src="assets/glyph-black.png" alt=""> INDIE ROCK <img src="assets/glyph-black.png" alt=""> FIRENZE <img src="assets/glyph-black.png" alt=""> DAL 2017 <img src="assets/glyph-black.png" alt=""> CANZONI QUASI SEMPRE INUTILI <img src="assets/glyph-black.png" alt=""></span>`;
+mtrack.innerHTML = item.repeat(6);
+
+/* ================= PARALLAX hero ================= */
+const heroBg = document.getElementById('heroBg');
+addEventListener('scroll', () => {
+  const y = scrollY;
+  if (y < innerHeight * 1.2) heroBg.style.transform = `translateY(${y * .28}px) scale(1.02)`;
+}, { passive:true });
+
+/* ================= REVEAL ================= */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold:.12 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ================= SONG INDEX ================= */
+const songIndex = document.getElementById('songIndex');
+SONGS.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.className = 'song-card rv' + (s.soon ? ' soon' : '');
+  b.innerHTML = `
+    <div class="no">Traccia ${String(i+1).padStart(2,'0')}</div>
+    <div class="tt">${s.title}</div>
+    <div class="st">${s.soon ? 'la stiamo ancora scrivendo…' : s.status}</div>
+    ${s.soon ? '<span class="badge-soon">testo in arrivo</span>' : '<span class="go">→</span>'}`;
+  if (!s.soon) b.addEventListener('click', () => openLyrics(s.id));
+  songIndex.appendChild(b);
+  io.observe(b);
+});
+
+/* ================= SETLIST ================= */
+const setlistEl = document.getElementById('setlist');
+SETLIST.forEach(id => {
+  const s = SONGS.find(x => x.id === id);
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = 'javascript:void(0)';
+  a.innerHTML = `${s.title}<span class="arr">${s.soon ? 'in arrivo' : 'testo →'}</span>`;
+  if (!s.soon) a.addEventListener('click', () => openLyrics(id));
+  li.appendChild(a);
+  setlistEl.appendChild(li);
+});
+
+/* ================= MODAL ================= */
+const modal = document.getElementById('modal');
+const sheet = document.getElementById('sheet');
+const sheetTitle = document.getElementById('sheetTitle');
+const sheetLyrics = document.getElementById('sheetLyrics');
+const sheetNote = document.getElementById('sheetNote');
+let lfs = 1.45;
+
+function openLyrics(id){
+  const s = SONGS.find(x => x.id === id);
+  sheetTitle.textContent = s.title;
+  sheetLyrics.innerHTML = s.lyrics;
+  sheetNote.style.display = s.excerpt ? 'block' : 'none';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  sheet.scrollTop = 0;
+}
+function closeLyrics(){
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('sheetClose').addEventListener('click', closeLyrics);
+modal.addEventListener('click', e => { if (e.target === modal) closeLyrics(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') closeLyrics(); });
+
+/* accessibilità testo */
+document.querySelectorAll('.acc-btn').forEach(btn => btn.addEventListener('click', () => {
+  const k = btn.dataset.acc;
+  if (k === 'minus') lfs = Math.max(1.1, lfs - .12);
+  if (k === 'plus')  lfs = Math.min(2.2, lfs + .12);
+  if (k === 'print') window.print();
+  sheetLyrics.style.setProperty('--lfs', lfs + 'rem');
+}));
+
+/* ================= STAMPA (solo il testo) ================= */
+const printStyle = document.createElement('style');
+printStyle.textContent = `
+@media print{
+  @page{size:A4 portrait;margin:18mm 16mm}
+  body>*:not(.modal){display:none !important}
+  html,body{background:#fff !important}
+  .modal{
+    position:static !important;display:block !important;padding:0 !important;
+    background:none !important;backdrop-filter:none !important;inset:auto !important;
+  }
+  .sheet{
+    position:static !important;width:100% !important;max-height:none !important;
+    overflow:visible !important;box-shadow:none !important;transform:none !important;
+    background-image:none !important;padding:0 !important;
+  }
+  .sheet::before{display:none !important}
+  .sheet-close,.acc-bar{display:none !important}
+  .sheet .lyrics{color:#000 !important;line-height:1.7 !important;font-size:14pt !important}
+  .sheet h3{font-size:20pt !important}
+  .print-header{
+    display:flex !important;align-items:flex-end;justify-content:space-between;gap:16px;
+    border-bottom:2.5px solid #000;padding-bottom:12px;margin-bottom:26px;
+  }
+  .print-header img{height:44px;width:auto}
+  .print-header span{
+    font-family:'Special Elite',monospace;font-size:.7rem;letter-spacing:2px;
+    text-transform:uppercase;color:#555;
+  }
+}`;
+document.head.appendChild(printStyle);
+</script>
+</body>
+</html>
